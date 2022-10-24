@@ -1,0 +1,42 @@
+:root {
+    --fondo: #4C0033;
+    --fondoBoton: #AF0171;
+  }
+
+
+body{
+    background-color: var(--fondo);
+}
+
+a {
+    display: flex;
+    height: 150px;
+    margin-top: 50px;
+    margin-left: 40%;
+    
+    text-decoration: none;
+    color: black;
+    background-color: var(--fondoBoton);
+    border-radius: 25%;
+    width: 150px;
+    height: 150px;
+}
+
+p{
+    display: flex;
+    margin: auto;
+}
+
+a:hover{
+    color: white;
+    transform: scale(1.5);
+	transition:  transform .5s;
+}
+
+table{
+    color: white;
+    display: flex;
+    margin-top: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
