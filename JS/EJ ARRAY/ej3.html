@@ -21,19 +21,82 @@
         let aMeses = ["enero","febrero","marzo","abril","mayo","junio","julio",
                      "agosto","septiembre","octubre","noviembre","diciembre"];
 
-        let aMesesM = [];
-        let primerMesM;
-
-        for(var i = 0; i < aMeses.length; i++){
-            if (aMeses[i].charAt(0) == "m") {
-                aMesesM.push(aMeses[i]);
-            }
-        }
-        document.write("meses que empiezan por M : "+aMesesM+"</br>");
         
-        document.write("el primer mes que empiza por M es: "+aMesesM[0]);
+        
 
+        function apartadoA(array){
+            let aMesesM = [];
 
+            for(var i = 0; i < array.length; i++){
+                if (array[i].charAt(0) == "m") {
+                    aMesesM.push(array[i]);
+                }
+            }
+            return aMesesM;
+            
+        }
+
+        function apartadoB(array){
+            var resultado = array.find(mes => mes.charAt(0) == 'm');
+            
+            return resultado;
+        }
+        
+        function checkMes(mes) {
+            return mes == 'marzo';
+        }
+
+        function apartadoC(array){
+            document.write("La posicion del array del primer elemento que empiza por M: "+array.findIndex(checkMes)+"</br>");
+        }
+
+        function apartadoD(array){
+            var existe = false;
+            for(var i = 0; i < array.length; i++){
+                if (array[i].charAt(0) == "s") {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+
+        function apartadoE(array){
+            var existe = false;
+            var tamañoPalabra;
+            for(var i = 0; i < array.length; i++){
+                if (array[i].charAt(array[i].length) == "O") {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+
+        function apartadoF(array){
+            let aMesesM = [];
+
+            for(var i = 0; i < array.length; i++){
+                aMesesM.push(array[i].toUpperCase());
+            }
+            return aMesesM;
+        }
+
+        function apartadoG(array){
+            var existe = false;
+            for(var i = 0; i < array.length; i++){
+                if (array[i] == "octubre") {
+                    existe = true;
+                }
+            }
+            return existe;
+        }
+
+        document.write("meses que empiezan por M : "+apartadoA(aMeses)+"</br>");
+        document.write("el primer mes que empiza por M es: "+apartadoB(aMeses)+"</br>");
+        apartadoC(aMeses);
+        document.write("¿algun mes empieza por S?"+apartadoD(aMeses)+"</br>");
+        document.write("¿todos los meses acaban por O?"+apartadoE(aMeses)+"</br>");
+        document.write("meses en mayusculas"+apartadoF(aMeses)+"</br>");
+        document.write("¿algun mes es octubre?"+apartadoG(aMeses)+"</br>");
     </script>
 </body>
 </html>

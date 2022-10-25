@@ -3,8 +3,8 @@
         $servidor = "localhost";
         $usuario = "root";
         $contraseña = "";
-        $bd = "alumnos_bbdd";//casa
-        //$bd = "alumnos";//clase
+        //$bd = "alumnos_bbdd";//casa
+        $bd = "alumnos";//clase
 
         try{
             $conexion = new PDO ("mysql:host=$servidor;dbname=$bd", $usuario, $contraseña);
