@@ -1,10 +1,13 @@
 <?php 
+echo "<link rel='stylesheet' type='text/css' href='estilosBotonera.css' />";
+
     require "conexionClase.php";
 
-    echo "<form action='' method='post'>
+    echo "<div id='borraUsuario'><fieldset>
+    <legend>Completa los campos:</legend><form action='' method='post'>
         <input type='text' name='codigo' placeholder='Codigo'>
-        <p><input type='submit' name='botonEnviar' value='Enviar datos'></p>
-        </form>";
+        <p><input id='botonEnviar' type='submit' name='botonEnviar' value='Enviar datos'></p>
+        </fieldset></form></div>";
 
         if(isset($_POST['botonEnviar'])){
             $codigoR = $_POST['codigo'];

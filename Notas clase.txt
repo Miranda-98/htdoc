@@ -1,0 +1,5 @@
+$_REQUEST -> Una matriz asociativa que por defecto contiene el contenido de $_GET , $_POST y $_COOKIE .
+
+//echo "<body onLoad=loginUsuarios.html;''>";
+$url = "loginUsuarios.html";
+echo "<SCRIPT>window.location='$url';</SCRIPT>";

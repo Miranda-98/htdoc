@@ -10,16 +10,17 @@ body{
 
 a {
     display: flex;
-    height: 150px;
     margin-top: 50px;
-    margin-left: 40%;
+    margin-left: 45%;
     
     text-decoration: none;
     color: black;
     background-color: var(--fondoBoton);
     border-radius: 25%;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 90px;
+    font-size: 25px;
+    text-align: center;
 }
 
 p{
@@ -36,7 +37,45 @@ a:hover{
 table{
     color: white;
     display: flex;
+    justify-content: center;
     margin-top: 50px;
     margin-left: 30%;
     margin-right: 30%;
+}
+
+#insertaUsuario{
+    display: flex;
+    margin-top : 15%;
+    margin-left: 20%;
+    
+}
+
+#buscaUsuario{
+    display: flex;
+    margin-top: 15%;
+    margin-left: 40%;
+}
+
+#borraUsuario{
+    display: flex;
+    margin-top: 15%;
+    margin-left: 40%;
+}
+
+#botonEnviar{
+    display: flex;
+    margin-left: 40%;
+    margin-top: 5%;
+}
+
+div  fieldset{
+    color: white;
+}
+
+input {
+}
+
+
+::placeholder{
+    
 }
