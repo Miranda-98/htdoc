@@ -1,5 +1,5 @@
 <?php 
-    echo "<link rel='stylesheet' type='text/css' href='estilosBotonera.css' />";
+    //echo "<link rel='stylesheet' type='text/css' href='estilosBotonera.css' />";
     require_once 'conexionClase.php';
     $datosCorrectos = 0;
    
@@ -8,8 +8,48 @@
         $codigoR = $_POST['codigo'];
     }
 
+    if(isset($_POST['botonEnviar2'])){
+        $codigoR2 = $_POST['codigo'];
+        $nombreR2 = $_POST['nombre'];
+        $apellidoR2 = $_POST['apellido'];
+        $telefonoR2 = $_POST['telefono'];
+        $correoR2 = $_POST['correo'];
+
+    }
 
 
+    //actualizar los datos del alumno
+    try{
+        $conecta = conectar();
+        $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        //sentencia sql preparada
+        $sqlP = $conecta->prepare("UPDATE alumnos SET NOMBRE=:nom, APELLIDOS=:ape, TELEFONO=:tlf, CORREO=:cor WHERE CODIGO=:cod;");
+
+        
+        //paso del valor
+        $sqlP->bindParam(":cod", $codigoR2);
+        $sqlP->bindParam(":nom", $nombreR2);
+        $sqlP->bindParam(":ape", $apellidosR2);
+        $sqlP->bindParam(":tlf", $telefonoR2);
+        $sqlP->bindParam(":cor", $correoR2);
+
+        
+        
+
+    
+        //ejecutamos la inserccion
+        $sqlP->execute();
+
+        echo "usuario actualizado correctamente";
+ 
+
+    } catch (PDOException $e){
+        echo "error al ingresar usuario".$e->getMessage();
+    }
+
+
+    //comprobar que existe el alumno
     try{    
 
         $conecta = conectar();
@@ -35,14 +75,14 @@
     }
 
     
-if($datosCorrectos == 0 ){
+        if($datosCorrectos == 0 ){
             echo "<div id='buscaUsuario'><form action='' method='post'><fieldset>
                 <legend>Completa los campos:</legend>
                 <input type='text' name='codigo' placeholder='Codigo'>
                 <p><input id='botonEnviar' type='submit' name='botonEnviar' value='Enviar datos'></p>
                 </fieldset></form></div>";
         } else if($datosCorrectos == 1){
-            echo "<div id='insertaUsuario'><form action='modificarUsuarios2.php' method='post'>
+            echo "<div id='insertaUsuario'><form action='' method='post'>
                 <fieldset>
                 <legend>Completa los campos:</legend>
                 <input type='text' name='codigo' value=".$resultado['CODIGO'].">
