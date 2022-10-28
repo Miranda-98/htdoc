@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,4 +15,26 @@
         unidades (nº de unidades * precio).
     -->
 </body>
+<script type="text/javascript">
+    class Televisor {
+        constructor(nombre, categoria, unidades, precio) {
+            this.nombre = nombre;
+            this.categoria = categoria;
+            this.unidades = unidades;
+            this.precio = precio;
+        }
+
+
+
+        importe() {
+            let importe = this.unidades * this.precio;  
+            return importe;
+        }
+    }
+    let tvSamsung = new Televisor('tvSamsung42"', 'Televisores', 4, 345.95);
+    document.write('el precio es: '+tvSamsung.importe());
+</script>
+
+
+
 </html>
