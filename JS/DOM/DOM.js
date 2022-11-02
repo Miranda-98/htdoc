@@ -160,11 +160,6 @@ function ej3() {
     console.log(document.querySelector('form > label:nth-last-of-type(1) > input[value=H]').value);
 
 
-
-
-
-
-
 }
 
 function lanzadorFuncionesSimultaneas() {

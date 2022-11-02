@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <form method="post" action="primerFormulario.php">
+    <form method="post" action="">
         <label for="nombre"> Nombre </label>
         <input type="number" name="nombre" required>
         <p><input type="submit" name="botonEnviar" value="Enviar datos"></p>
