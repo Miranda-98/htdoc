@@ -33,58 +33,69 @@
     }
 
     if(isset($_POST['botonTablaAñadir'])) {
-        if($_POST['tabla'] == 'Cliente') {/*
-            echo "<div id='insertaUsuario'><form action='' method='post'>
-            <fieldset>
-                <legend>Completa los campos:</legend>
-                <input type='text' name='cliente' placeholder='Cliente ID'>
-                <input type='text' name='nombre' placeholder='Nombre'>
-                <input type='text' name='direccion' placeholder='Direccion'>
-                <input type='text' name='ciudad' placeholder='Ciudad'>
-                <input type='text' name='estado' placeholder='Estado'>
-                <input type='text' name='cp' placeholder='Codigo Postal'>
-                <input type='text' name='codigoArea' placeholder='Codigo Area'>
-                <input type='text' name='telefono' placeholder='Telefono'>
-                <input type='text' name='vendedor' placeholder='Vendedor'>
-                <input type='text' name='limiteCredito' placeholder='Limite de Credito'>
-                <input type='text' name='comentarios' placeholder='Comentarios'>
-                <p><input type='submit' id='botonEnviar' name='botonEnviar' value='Enviar datos'></p>
-                </fieldset></form></div>";
-
-            if(isset($_POST['botonEnviar'])){
-                
-                $clienteR = $_POST['cliente'];
-                $nombreR = $_POST['nombre'];
-                $direccionR = $_POST['direccion'];
-                $ciudadR = $_POST['ciudad'];
-                $estadoR = $_POST['estado'];
-                $cpR = $_POST['cp'];
-                $codigoAreaR = $_POST['codigoArea'];
-                $telefonoR = $_POST['telefono'];
-                $vendedorR = $_POST['vendedor'];
-                $limiteCreditoR = $_POST['limiteCredito'];
-                $comentariosR = $_POST['comentarios'];
-
-                echo '<script language="javascript">alert('+$clienteR+');</script>';
-            }
-            //añadirCliente($clienteR, $nombreR, $direccionR, $ciudadR, $estadoR, $cpR, $codigoAreaR, $telefonoR, $vendedorR, $limiteCreditoR, $comentariosR);
-            */
+        if($_POST['tabla'] == 'Cliente') {
+            
+            
         } else if ($_POST['tabla'] == 'Departamento') {
             
+            echo "<form method='post' action='añadir.php'>
+                    <fieldset>
+                        <legend>Completa los campos:</legend>
+                        <input type='text' name='departamento' placeholder='Departamento ID' required>
+                        <input type='text' name='nombre' placeholder='Nombre' required>
+                        <input type='text' name='ubicacion' placeholder='Ubicacion ID' required>
+                        <p><input type='submit' name='botonEnviarDepartamento' value='Enviar datos'></p>
+                    </fieldset>
+                </form>";
 
         }else if ($_POST['tabla'] == 'Empleados') {
             
-            
+            echo "<form method='post' action='añadir.php'>
+                            <fieldset>
+                            <legend>Completa los campos:</legend>
+                            <input type='text' name='empleado' placeholder='Empleado_ID' >
+                            <input type='text' name='apellido' placeholder='Apellido' >
+                            <input type='text' name='nombre' placeholder='Nombre' >
+                            <input type='text' name='inicial' placeholder='Inicial Segundo Apellido' >
+                            <select name='trabajo'>
+                                <option value='667'>667</option>
+                                <option value='668'>668</option>
+                                <option value='669'>669</option>
+                                <option value='670'>670</option>
+                                <option value='671'>671</option>
+                                <option value='672'>672</option>
+                            </select>
+                            <input type='text' name='jefe' placeholder='Jefe ID' >
+                            <input type='date' name='fechaContrato' placeholder='Fecha Contrato' >
+                            <input type='text' name='salario' placeholder='Salario' >
+                            <input type='text' name='comision' placeholder='Comision' >
+                            <select name='departamento'>
+                                <option value='10'>10</option>
+                                <option value='12'>12</option>
+                                <option value='13'>13</option>
+                                <option value='14'>14</option>
+                                <option value='20'>20</option>
+                                <option value='23'>23</option>
+                                <option value='24'>24</option>
+                                <option value='30'>30</option>
+                                <option value='34'>34</option>
+                                <option value='40'>40</option>
+                                <option value='43'>43</option>
+                            </select>
+                            <p><input type='submit' name='botonEnviarEmpleado' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
+
         }else if ($_POST['tabla'] == 'Trabajos') {
            
         echo "<form method='post' action='añadir.php'>
-            <fieldset>
-                <legend>Completa los campos:</legend>
-                <input type='text' name='trabajo' placeholder='Trabajo_ID' required>
-                <input type='text' name='funcion' placeholder='Funcion' required>
-                <p><input type='submit' name='botonEnviarTrabajo' value='Enviar datos'></p>
-            </fieldset>
-        </form>";
+                    <fieldset>
+                        <legend>Completa los campos:</legend>
+                        <input type='text' name='trabajo' placeholder='Trabajo_ID' required>
+                        <input type='text' name='funcion' placeholder='Funcion' required>
+                        <p><input type='submit' name='botonEnviarTrabajo' value='Enviar datos'></p>
+                    </fieldset>
+                </form>";
 
         }else if ($_POST['tabla'] == 'Ubicacion') {
 
@@ -100,76 +111,7 @@
         }
     }
 
-    /*function añadirCliente($clienteR, $nombreR, $direccionR, $ciudadR, $estadoR, $cpR, $codigoAreaR, $telefonoR, $vendedorR, $limiteCreditoR, $comentariosR){
-        try{
-            $conecta = conectar();
-            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-            //comprobar que el usuario no esta registrado 
-            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM cliente WHERE CLIENTE_ID='".$_REQUEST['tabla']."';";
-            $resultado = $conecta->query($sqlComprobar);
-            $num = $resultado->fetch();
-            if($num['cantidad']>0) {
-                echo "el alumno ya esta registrado en la base de datos";//quitarlo
-            } else {
-                //sentencia sql preparada
-                $sqlP = $conecta->prepare("INSERT INTO cliente (CLIENTE_ID, nombre, Direccion, Ciudad, Estado, CodigoPostal, CodigoDeArea, Telefono, Vendedor_ID, Limite_De_Credito, Comentarios) 
-                VALUES (:cliente, :nombre, :direccion, :ciudad, :estado, :codigoPostal, :codigoArea, :telefono, :vendedor, :limiteCredito, :comentarios)");
-    
-    
-                //paso del valor
-                $sqlP->bindParam(":cliente", $cliente);
-                $sqlP->bindParam(":nombre", $nombre);
-                $sqlP->bindParam(":direccion", $direccion);
-                $sqlP->bindParam(":ciudad", $ciudad);
-                $sqlP->bindParam(":estado", $estado);
-                $sqlP->bindParam(":codigoPostal", $cp);
-                $sqlP->bindParam(":codigoArea", $codigoArea);
-                $sqlP->bindParam(":telefono", $telefono);
-                $sqlP->bindParam(":vendedor", $vendedor);
-                $sqlP->bindParam(":limiteCredito", $limiteCredito);
-                $sqlP->bindParam(":comentarios", $comentarios);
 
-    
-                //asignamos valor a los valores
-                $cliente = $clienteR;
-                $nombre = $nombreR;
-                $direccion = $direccionR;
-                $ciudad = $ciudadR;
-                $estado = $estadoR;
-                $cp = $cpR;
-                $codigoArea = $codigoAreaR;
-                $telefono = $telefonoR;
-                $vendedor = $vendedorR;
-                $limiteCredito = $limiteCreditoR;
-                $comentarios = $comentariosR;
-    
-                //ejecutamos la inserccion
-                $sqlP->execute();
-    
-                echo "usuario registrado correctamente";
-            }
-    
-        } catch (PDOException $e){
-            echo "error al ingresar usuario".$e->getMessage();
-        }
-    }*/
-
-    function añadirDepartamento(){
-
-    }
-
-    function añadirEmpleados(){
-
-    }
-
-    function añadirTrabajos(){
-
-    }
-
-    function añadirUbicacion(){
-        
-    }
 
     function mostrarCliente(){
         try{
