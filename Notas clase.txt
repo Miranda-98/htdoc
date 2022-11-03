@@ -5,3 +5,20 @@ $url = "loginUsuarios.html";
 echo "<SCRIPT>window.location='$url';</SCRIPT>";
 
 header(location)
+
+condicion ? true : false
+boleano = operador1 <=> operador2 -> si son iguales boleano vale true, sino vale false
+
+$GET['msg'] ?? "" -> si el get contien valor muestra el valor, si no no muestra nada
+
+if(empty() || empty()) {
+    header("location:limites.php"); -> me manda a limites.php
+    die();
+}
+
+if (menor > mayor) {
+    header("location:limites.php?msg='limites super ... inferior);
+    die();
+}
+
+header va con get porque se pasa la informacion por la url
