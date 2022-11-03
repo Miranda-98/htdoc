@@ -1,3 +1,5 @@
+
+
 $_REQUEST -> Una matriz asociativa que por defecto contiene el contenido de $_GET , $_POST y $_COOKIE .
 
 //echo "<body onLoad=loginUsuarios.html;''>";
@@ -6,7 +8,7 @@ echo "<SCRIPT>window.location='$url';</SCRIPT>";
 
 header(location)
 
-<<<<<<< HEAD
+
 condicion ? true : false
 boleano = operador1 <=> operador2 -> si son iguales boleano vale true, sino vale false
 
@@ -23,7 +25,7 @@ if (menor > mayor) {
 }
 
 header va con get porque se pasa la informacion por la url
-=======
+
  echo "<form method='post' action='añadir.php'>
                     <fieldset>
                         <legend>Completa los campos:</legend>
@@ -40,4 +42,5 @@ header va con get porque se pasa la informacion por la url
                         <p><input type='submit' name='botonEnviarEmpleado' value='Enviar datos'></p>
                     </fieldset>
                 </form>";
->>>>>>> 9a2a3ebf8bb4ccc9a3c731f2ffd663d36ff24bd4
+
+
