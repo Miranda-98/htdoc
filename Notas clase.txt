@@ -6,6 +6,7 @@ echo "<SCRIPT>window.location='$url';</SCRIPT>";
 
 header(location)
 
+<<<<<<< HEAD
 condicion ? true : false
 boleano = operador1 <=> operador2 -> si son iguales boleano vale true, sino vale false
 
@@ -22,3 +23,21 @@ if (menor > mayor) {
 }
 
 header va con get porque se pasa la informacion por la url
+=======
+ echo "<form method='post' action='añadir.php'>
+                    <fieldset>
+                        <legend>Completa los campos:</legend>
+                        <input type='text' name='empleado' placeholder='Empleado_ID' required>
+                        <input type='text' name='apellido' placeholder='Apellido' required>
+                        <input type='text' name='nombre' placeholder='Nombre' required>
+                        <input type='text' name='inicial' placeholder='Inicial Segundo Apellido' required>
+                        <input type='select' name='trabajo' placeholder='Trabajo_ID' required>***667-672
+                        <input type='text' name='jefe' placeholder='Jefe ID' required>
+                        <input type='date' name='fechaContrato' placeholder='Fecha Contrato' required>
+                        <input type='text' name='salario' placeholder='Salario' required>
+                        <input type='text' name='comision' placeholder='Comision' required>
+                        <input type='text' name='departamento' placeholder='Departamento ID' required>****[10,12,13,14,20,23,24,30,34,40,43]
+                        <p><input type='submit' name='botonEnviarEmpleado' value='Enviar datos'></p>
+                    </fieldset>
+                </form>";
+>>>>>>> 9a2a3ebf8bb4ccc9a3c731f2ffd663d36ff24bd4
