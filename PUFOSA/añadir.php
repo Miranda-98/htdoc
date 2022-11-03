@@ -120,10 +120,11 @@
 
     
     if(isset($_POST['botonEnviarEmpleado'])){
-        $empleado_ID = $_POST['empleadoID'];
+        $empleado_ID = $_POST['empleado'];
         $Apellido = $_POST['apellido'];
         $Nombre = $_POST['nombre'];
         $Inicial_del_segundo_apellido = $_POST['inicial'];
+        echo "eeeeeeeeeeeeeeeeeeeeeeee".$_POST['trabajo'];
         $Trabajo_ID = $_POST['trabajo'];
         $Jefe_ID = $_POST['jefe'];
         $Fecha_contrato = $_POST['fechaContrato'];
@@ -137,7 +138,7 @@
             $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
             //comprobar que el usuario no esta registrado 
-            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE Trabajo_ID='".$_REQUEST['empleadoID']."';";
+            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE Trabajo_ID='".$_REQUEST['empleado']."';";
             $resultado = $conecta->query($sqlComprobar);
             $num = $resultado->fetch();
             if($num['cantidad']>0) {

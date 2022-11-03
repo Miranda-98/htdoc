@@ -44,3 +44,6 @@ header va con get porque se pasa la informacion por la url
                 </form>";
 
 
+
+
+----------------------------------TRABAJO NO LO ENCUNETRA AL INGRESAR EMPLEADOS-------------------------------------------------

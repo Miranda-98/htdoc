@@ -1,5 +1,7 @@
 <?php
     require "conexionBDPufosa.php";
+
+
     if(isset($_POST['botonRegistro'])){
         $nombreR = $_POST['user'];
         $contraseñaR = $_POST['password'];

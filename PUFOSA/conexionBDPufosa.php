@@ -17,5 +17,4 @@
             return $conexion;
         }
 
-        conectar();
 ?>

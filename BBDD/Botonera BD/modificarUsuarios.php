@@ -1,6 +1,6 @@
 <?php 
     //echo "<link rel='stylesheet' type='text/css' href='estilosBotonera.css' />";
-    require_once 'conexionClase.php';
+    require 'conexionClase.php';
     $datosCorrectos = 0;
    
 

@@ -1,50 +1,40 @@
-<?php
+<?PHP 
     require_once "conexionBDPufosa.php";
-    function modificarCliente() {
 
-    }
+    //eliminar cliente
 
-    function modificarDepartamento() {
+    //eliminar departamento
 
-    }
+    //eliminar empleado
 
-    function modificarEmpleado() {
+    //eliminar trabajos
 
-    }
-
-    function modificarTrabajo() {
-
-    }
-
-    
-    if(isset($_POST['botonModificarUbicacion'])) {
+    //eliminar ubicacion
+    if(isset($_POST['botonEliminarUbicacion'])) {
         $ubicacion = $_POST['ubicacion'];
-        $grupo = $_POST['grupo'];
 
         try{
             $conecta = conectar();
             $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "UPDATE ubicacion SET GrupoRegional=:gre WHERE Ubicacion_ID=$ubicacion;";
+            $sql = "DELETE FROM ubicacion WHERE Ubicacion_ID =:cod";
 
             //sentencia sql preparada
             $sqlP = $conecta->prepare($sql);
 
             
             //paso del valor
-            $sqlP->bindParam(":gre", $grupo);
+            $sqlP->bindParam(":cod", $ubicacion);
 
             
             //ejecutamos la inserccion
             $sqlP->execute();
 
-            echo "usuario actualizado correctamente";
+            echo "ubicacion eliminada correctamente";
     
 
         } catch (PDOException $e){
             echo "error al ingresar usuario".$e->getMessage();
         }
     }
-
-    
 ?>
