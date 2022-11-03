@@ -1,9 +1,126 @@
 <?php 
     require "conexionBDPufosa.php";
 
+    if(isset($_POST['botonEnviarCliente'])){
+        $cliente_ID = $_POST['cliente'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $ciudad = $_POST['ciudad'];
+        $estado = $_POST['estado'];
+        $cPostal = $_POST['codigoPostal'];
+        $cArea = $_POST['codigoArea'];
+        $telefono = $_POST['telefono'];
+        $vendedor = $_POST['vendedorID'];
+        $limiteCredito = $_POST['limite'];
+        $comentarios = $_POST['comentario'];
+
+        echo "paaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" . $cliente_ID;
+
+        try {
+            
+            $conecta = conectar();
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            //comprobar que el usuario no esta registrado 
+            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM cliente WHERE CLIENTE_ID='".$_REQUEST['cliente']."';";
+            $resultado = $conecta->query($sqlComprobar);
+            $num = $resultado->fetch();
+            if($num['cantidad']>0) {
+                echo "el cliente ya esta registrada en la base de datos";//quitarlo
+            } else {
+                //sentencia sql preparada
+                $sqlP = $conecta->prepare("INSERT INTO cliente (CLIENTE_ID, nombre, Direccion, Ciudad,
+                    Estado, CodigoPostal, CodigoDeArea, Telefono, Vendedor_ID, Limite_De_Credito, Comentarios)
+                    VALUES (:clie, :nom, :dir, :ciu, :est, :cp, :ca, :tl, :vid, :lim, :com);");
+            
+                //paso del valor
+                $sqlP->bindParam(":clie", $cliente_IDR);
+                $sqlP->bindParam(":nom", $nombreR);
+                $sqlP->bindParam(":dir", $direccionR);
+                $sqlP->bindParam(":ciu", $ciudadR);
+                $sqlP->bindParam(":est", $estadoR);
+                $sqlP->bindParam(":cp", $cPostalR);
+                $sqlP->bindParam(":ca", $cAreaR);
+                $sqlP->bindParam(":tl", $telefonoR);
+                $sqlP->bindParam(":vid", $vendedorR);
+                $sqlP->bindParam(":lim", $limiteCreditoR);
+                $sqlP->bindParam(":com", $comentariosR);
+        
+
+                //asignamos valor a los valores
+                $cliente_IDR = $cliente_ID;
+                $nombreR = $nombre;
+                $direccionR = $direccion;
+                $ciudadR = $ciudad;
+                $estadoR = $estado;
+                $cPostalR = $cPostal;
+                $cAreaR = $cArea;
+                $telefonoR = $telefono;
+                $vendedorR = $vendedor;
+                $limiteCreditoR = $limiteCredito;
+                $comentariosR = $comentarios;
+
+                //ejecutamos la inserccion
+                $sqlP->execute();
+
+                echo "cliente registrado correctamente";
+        }
+
+
+        } catch (PDOException $e) {
+            echo "error " . $e;
+        }
+    
+    
+        
+    
+    }
+
+
+    if(isset($_POST['botonEnviarDepartamento'])){
+        $departamento = $_POST['departamento'];
+        $nombre = $_POST['nombre'];
+        $ubicacion = $_POST['ubicacion'];
+    
+        try{
+            $conecta = conectar();
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            //comprobar que el usuario no esta registrado 
+            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM departamento WHERE departamento_ID='".$_REQUEST['departamento']."';";
+            $resultado = $conecta->query($sqlComprobar);
+            $num = $resultado->fetch();
+            if($num['cantidad']>0) {
+                echo "departamento ya esta registrada en la base de datos";//quitarlo
+            } else {
+                //sentencia sql preparada
+                $sqlP = $conecta->prepare("INSERT INTO departamento (departamento_ID, Nombre, Ubicacion_ID) VALUES (:depa, :nom, :ubi)");
+
+
+                //paso del valor
+                $sqlP->bindParam(":depa", $departamentoR);
+                $sqlP->bindParam(":nom", $nombreR);
+                $sqlP->bindParam(":ubi", $ubicacionR);
+
+                //asignamos valor a los valores
+                $departamentoR = $departamento;
+                $nombreR = $nombre;
+                $ubicacionR = $ubicacion;
+
+                //ejecutamos la inserccion
+                $sqlP->execute();
+
+                echo "departamento registrado correctamente";
+            }
+
+        } catch (PDOException $e) {
+            echo "error -> ". $e;
+        }
+    }
+
     
     if(isset($_POST['botonEnviarEmpleado'])){
-        $empleado_ID = $_POST['empleado'];
+        $empleado_ID = $_POST['empleadoID'];
         $Apellido = $_POST['apellido'];
         $Nombre = $_POST['nombre'];
         $Inicial_del_segundo_apellido = $_POST['inicial'];
@@ -15,12 +132,12 @@
         $Departamento_ID = $_POST['departamento'];
 
         try {
-            echo "paaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            
             $conecta = conectar();
             $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
             //comprobar que el usuario no esta registrado 
-            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE Trabajo_ID='".$_REQUEST['empleado']."';";
+            $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM empleados WHERE Trabajo_ID='".$_REQUEST['empleadoID']."';";
             $resultado = $conecta->query($sqlComprobar);
             $num = $resultado->fetch();
             if($num['cantidad']>0) {
@@ -59,7 +176,7 @@
                 //ejecutamos la inserccion
                 $sqlP->execute();
 
-                echo "ubicacion registrado correctamente";
+                echo "empleado registrado correctamente";
         }
 
 
@@ -100,7 +217,7 @@
                 //ejecutamos la inserccion
                 $sqlP->execute();
 
-                echo "ubicacion registrado correctamente";
+                echo "trabajo registrado correctamente";
             }
 
         } catch (PDOException $e) {

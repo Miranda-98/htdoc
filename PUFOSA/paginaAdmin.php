@@ -8,6 +8,8 @@
 </head>
 <?php 
     require "conexionBDPufosa.php";
+    require "mostrar.php";
+    require "modificar.php";
     $nombre = "SELECIONA UNA TABLA";
 
 
@@ -35,6 +37,23 @@
     if(isset($_POST['botonTablaAñadir'])) {
         if($_POST['tabla'] == 'Cliente') {
             
+            echo "<form method='post' action='añadir.php'>
+                    <fieldset>
+                        <legend>Completa los campos:</legend>
+                        <input type='text' name='cliente' placeholder='Cliente ID' required>
+                        <input type='text' name='nombre' placeholder='Nombre' required>
+                        <input type='text' name='direccion' placeholder='Direccion' required>
+                        <input type='text' name='ciudad' placeholder='Ciudad' required>
+                        <input type='text' name='estado' placeholder='Estado' required>
+                        <input type='text' name='codigoPostal' placeholder='Codigo Postal' required>
+                        <input type='text' name='codigoArea' placeholder='Codigo de Area' required>
+                        <input type='text' name='telefono' placeholder='Telefono' required>";
+                        empleados();
+                        echo "<input type='text' name='limite' placeholder='Limite de Credito' required>
+                        <input type='text' name='comentario' placeholder='Comentarios' required>
+                        <p><input type='submit' name='botonEnviarCliente' value='Enviar Datos'></p>
+                    </fieldset>
+                </form>";
             
         } else if ($_POST['tabla'] == 'Departamento') {
             
@@ -111,183 +130,68 @@
         }
     }
 
-
-
-    function mostrarCliente(){
-        try{
-            $conexion = conectar();
-            $sql = "SELECT * FROM cliente;";
-            $result = $conexion->query($sql);
     
-        echo "<table border=solid black 1px>
-        <th colspan=11>TABLA CLIENTE</th>
-                    <tr>
-                        <td>CLIENTE_ID</td>
-                        <td>nombre</td>
-                        <td>Direccion</td>
-                        <td>Ciudad</td>
-                        <td>Estado</td>
-                        <td>CodigoPostal</td>
-                        <td>CodigoDeArea</td>
-                        <td>Telefono</td>
-                        <td>Vendedor_ID</td>
-                        <td>Limite_De_Credito</td>
-                        <td>Comentarios</td>
-                    </tr>"; 
-        
-        
-        
-        foreach($result as $fila){
-            echo " <tr>
-            <td>".$fila['CLIENTE_ID']."</td>", 
-            "<td>".$fila['nombre']."</td>", 
-            "<td>".$fila['Direccion']."</td>", 
-            "<td>".$fila['Ciudad']."</td>", 
-            "<td>".$fila['Estado']."</td>", 
-            "<td>".$fila['CodigoPostal']."</td>", 
-            "<td>".$fila['CodigoDeArea']."</td>", 
-            "<td>".$fila['Telefono']."</td>", 
-            "<td>".$fila['Vendedor_ID']."</td>", 
-            "<td>".$fila['Limite_De_Credito']."</td>",
-            "<td>".$fila['Comentarios']."</td></tr>";
 
-
-        }
-
-        } catch (PDOException $e) {
-            echo "error " . $e;
+    if(isset($_POST['botonTablaModificar'])) {
+        switch($_POST['tabla']){
+            case 'Cliente';
+                echo "clieeeeeeeee";
+                break;
+            
+            case 'Departamento';
+                echo "depa";
+                break;
+        
+            case 'Empleados';
+                echo "emplee";
+                break;
+        
+            case 'Trabajos';
+                echo "traba";
+                break;
+        
+            case 'Ubicacion';
+                modificarUbicacion();
+                break;
+        
         }
     }
 
-    function mostrarDepartamento(){
-        try{
-            $conexion = conectar();
-            $sql = "SELECT * FROM departamento;";
-            $result = $conexion->query($sql);
+
+
+
+
+
+    function empleados(){
+        $bbdd = "PUFOSA";
+        $servidor = "localhost";
+        $usuario = "root";
+        $contraseña = "";
     
-        echo "<table border=solid black 1px>
-        <th colspan=11>TABLA DEPARTAMENTO</th>
-                    <tr>
-                        <td>Departamento_ID</td>
-                        <td>Nombre</td>
-                        <td>Ubicacion_ID</td>
-                    </tr>"; 
-        
-        
-        
-        foreach($result as $fila){
-            echo " <tr>
-            <td>".$fila['departamento_ID']."</td>", 
-            "<td>".$fila['Nombre']."</td>", 
-            "<td>".$fila['Ubicacion_ID']."</td></tr>";
-
-
-        }
-
+        try {
+            $conexion = new PDO ("mysql:host=$servidor;dbname=$bbdd", $usuario, $contraseña);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "SELECT * FROM empleados ;";
+      
+            $result = $conexion->query($sql);//almaceno en result lo que devuelve la query 
+           
+            echo "<select name='vendedorID'>";
+            
+            foreach($result as $fila){
+              
+              echo "<option value=".$fila['empleado_ID'].">".$fila['empleado_ID']."</option>";
+              
+           }
+           echo "</select>";
+      
         } catch (PDOException $e) {
-            echo "error " . $e;
+            echo "conexion fallida: ".$e->getMessage();
         }
-    }
-
-    function mostrarEmpleados(){
-        try{
-            $conexion = conectar();
-            $sql = "SELECT * FROM empleados;";
-            $result = $conexion->query($sql);
     
-        echo "<table border=solid black 1px>
-        <th colspan=11>TABLA EMPLEADOS</th>
-                    <tr>
-                        <td>empleado_ID</td>
-                        <td>Apellido</td>
-                        <td>Nombre</td>
-                        <td>Inicial_del_segundo_apellido</td>
-                        <td>Trbajo_ID</td>
-                        <td>Jefe_ID</td>
-                        <td>Fecha_contrato</td>
-                        <td>Salario</td>
-                        <td>Comision</td>
-                        <td>Departamento_ID</td>
-                    </tr>"; 
-        
-        
-        
-        foreach($result as $fila){
-            echo " <tr>
-            <td>".$fila['empleado_ID']."</td>", 
-            "<td>".$fila['Apellido']."</td>", 
-            "<td>".$fila['Nombre']."</td>", 
-            "<td>".$fila['Inicial_del_segundo_apellido']."</td>", 
-            "<td>".$fila['Trabajo_ID']."</td>", 
-            "<td>".$fila['Jefe_ID']."</td>", 
-            "<td>".$fila['Fecha_contrato']."</td>", 
-            "<td>".$fila['Salario']."</td>", 
-            "<td>".$fila['Comision']."</td>", 
-            "<td>".$fila['Departamento_ID']."</td></tr>";
-
-
-        }
-
-        } catch (PDOException $e) {
-            echo "error " . $e;
-        }
-    }
-
-    function mostrarTrabajos(){
-        try{
-            $conexion = conectar();
-            $sql = "SELECT * FROM trabajos;";
-            $result = $conexion->query($sql);
+      }
     
-        echo "<table border=solid black 1px>
-        <th colspan=11>TABLA TRABAJOS</th>
-                    <tr>
-                        <td>Trabajo_ID</td>
-                        <td>Funcion</td>
-                    </tr>"; 
-        
-        
-        
-        foreach($result as $fila){
-            echo " <tr>
-            <td>".$fila['Trabajo_ID']."</td>", 
-            "<td>".$fila['Funcion']."</td></tr>";
-
-
-        }
-
-        } catch (PDOException $e) {
-            echo "error " . $e;
-        }
-    }
-
-    function mostrarUbicacion(){
-        try{
-            $conexion = conectar();
-            $sql = "SELECT * FROM ubicacion;";
-            $result = $conexion->query($sql);
-    
-        echo "<table border=solid black 1px>
-        <th colspan=11>TABLA UBICACION</th>
-                    <tr>
-                        <td>Ubicacion_ID</td>
-                        <td>GrupoRegional</td>
-                    </tr>"; 
-        
-        
-        
-        foreach($result as $fila){
-            echo " <tr>
-            <td>".$fila['Ubicacion_ID']."</td>", 
-            "<td>".$fila['GrupoRegional']."</td></tr>";
-
-
-        }
-
-        } catch (PDOException $e) {
-            echo "error " . $e;
-        }
-    }
+      empleados();
 ?>
 
 <body>
