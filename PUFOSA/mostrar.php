@@ -175,5 +175,38 @@
         }
     }
 
+    function mostrarEmpleadosSimple() {
+        try{
+            $conexion = conectar();
+            $sql = "SELECT empleado_ID, Apellido, empleados.Nombre AS NombreEmpleado, departamento.Nombre FROM empleados
+            INNER JOIN departamento ON
+            empleados.Departamento_ID = departamento.departamento_ID
+            ORDER BY departamento.Nombre DESC;;";
+            $result = $conexion->query($sql);
     
+        echo "<table border=solid black 1px>
+        <th colspan=11>TABLA EMPLEADOS</th>
+                    <tr>
+                        <td>Empleado_ID</td>
+                        <td>Apellido</td>
+                        <td>Nombre</td>
+                        <td>Departamento_ID</td>
+                    </tr>"; 
+        
+        
+        
+        foreach($result as $fila){
+            echo " <tr>
+            <td>".$fila['empleado_ID']."</td>", 
+            "<td>".$fila['Apellido']."</td>", 
+            "<td>".$fila['NombreEmpleado']."</td>", 
+            "<td>".$fila['Nombre']."</td></tr>";
+
+
+        }
+
+        } catch (PDOException $e) {
+            echo "error " . $e;
+        }
+    }
 ?>

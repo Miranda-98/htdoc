@@ -42,7 +42,7 @@
             
             echo "<form method='post' action='añadir.php'>
                     <fieldset>
-                        <legend>Completa los campos:</legend>
+                        <legend>Añadir Cliente:</legend>
                         <input type='text' name='cliente' placeholder='Cliente' required>
                         <input type='text' name='nombre' placeholder='Nombre' required>
                         <input type='text' name='direccion' placeholder='Direccion' required>
@@ -51,7 +51,9 @@
                         <input type='text' name='codigoPostal' placeholder='Codigo Postal' required>
                         <input type='text' name='codigoArea' placeholder='Codigo de Area' required>
                         <input type='text' name='telefono' placeholder='Telefono' required>";
-                        empleados();
+                        vendedor();
+                        
+                        //<input type='text' name='vendedorID' placeholder='vendedor' required>
                         echo "<input type='text' name='limite' placeholder='Limite de Credito' required>
                         <input type='text' name='comentario' placeholder='Comentarios' required>
                         <p><input type='submit' name='botonEnviarCliente' value='Enviar Datos'></p>
@@ -62,7 +64,7 @@
             
             echo "<form method='post' action='añadir.php'>
                     <fieldset>
-                        <legend>Completa los campos:</legend>
+                        <legend>Añadir Departamento:</legend>
                         <input type='text' name='departamento' placeholder='Departamento ID' required>
                         <input type='text' name='nombre' placeholder='Nombre' required>";
                         ubicacion();
@@ -74,7 +76,7 @@
             
             echo "<form method='post' action='añadir.php'>
                             <fieldset>
-                            <legend>Completa los campos:</legend>
+                            <legend>Añadir Empleados:</legend>
                             <input type='text' name='empleado' placeholder='Empleado_ID' >
                             <input type='text' name='apellido' placeholder='Apellido' >
                             <input type='text' name='nombre' placeholder='Nombre' >
@@ -93,7 +95,7 @@
            
         echo "<form method='post' action='añadir.php'>
                     <fieldset>
-                        <legend>Completa los campos:</legend>
+                        <legend>Añadir Trabajo:</legend>
                         <input type='text' name='trabajo' placeholder='Trabajo' required>
                         <input type='text' name='funcion' placeholder='Funcion' required>
                         <p><input type='submit' name='botonEnviarTrabajo' value='Enviar datos'></p>
@@ -104,7 +106,7 @@
 
         echo "<form method='post' action='añadir.php'>
                     <fieldset>
-                        <legend>Completa los campos:</legend>
+                        <legend>Añadir Ubicacion:</legend>
                         <input type='text' name='ubicacion' placeholder='Ubicacion ID' required>
                         <input type='text' name='grupo' placeholder='Grupo Regional' required>
                         <p><input type='submit' name='botonEnviarUbicacion' value='Enviar datos'></p>
@@ -129,15 +131,22 @@
                 break;
         
             case 'Trabajos';
-                echo "traba";
+                echo "<form method='post' action='modificar.php'>
+                        <fieldset>
+                            <legend>Modificar Trabajo:</legend>
+                            <input type='text' name='trabajo' placeholder='Trabajo' required>
+                            <input type='text' name='funcion' placeholder='Funcion' required>
+                            <p><input type='submit' name='botonModificarTrabajo' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
                 break;
         
             case 'Ubicacion';
                 echo "<form method='post' action='modificar.php'>
                         <fieldset>
-                            <legend>Completa los campos:</legend>
-                            <input type='text' name='ubicacion' placeholder='Ubicacion_ID' required>
-                            <input type='text' name='grupo' placeholder='Grupo Regional' required>
+                            <legend>Modificar Ubicacion:</legend>";
+                            ubicacion();
+                            echo "<input type='text' name='grupo' placeholder='Grupo Regional' required>
                             <p><input type='submit' name='botonModificarUbicacion' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
@@ -149,28 +158,63 @@
     if(isset($_POST['botonTablaEliminar'])) {
         switch($_POST['tabla']){
             case 'Cliente';
-                echo "clieeeeeeeee";
+                echo "<form method='post' action='eliminar.php'>
+                        <fieldset>
+                            <legend>Eliminar Cliente:</legend>
+                            <input type='text' name='cliente' placeholder='Cliente' required>
+                            <input type='text' name='nombre' placeholder='Nombre' required>
+                            <input type='text' name='direccion' placeholder='Direccion' required>
+                            <input type='text' name='ciudad' placeholder='Ciudad' required>
+                            <input type='text' name='estado' placeholder='Estado' required>
+                            <input type='text' name='codigoPostal' placeholder='Codigo Postal' required>
+                            <input type='text' name='codigoArea' placeholder='Codigo de Area' required>
+                            <input type='text' name='telefono' placeholder='Telefono' required>";
+                            empleados();
+                            echo "<input type='text' name='limite' placeholder='Limite de Credito' required>
+                            <input type='text' name='comentario' placeholder='Comentarios' required>
+                            <p><input type='submit' name='botonEliminarCliente' value='Enviar Datos'></p>
+                        </fieldset>
+                    </form>";
                 break;
             
             case 'Departamento';
-                echo "depa";
+                echo "<form method='post' action='eliminar.php'>
+                        <fieldset>
+                            <legend>Eliminar Departamento:</legend>
+                            <input type='text' name='departamento' placeholder='Departamento ID' required>
+                            <input type='text' name='nombre' placeholder='Nombre' required>";
+                            ubicacion();
+                            echo "<p><input type='submit' name='botonEliminarDepartamento' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
                 break;
         
             case 'Empleados';
-                echo "emplee";
+                echo "<form method='post' action='eliminar.php'>
+                                <fieldset>
+                                <legend>Eliminar Empleado:</legend>";
+                                empleados();
+                                echo "<p><input type='submit' name='botonEliminarEmpleado' value='Enviar datos'></p>
+                            </fieldset>
+                        </form>";
                 break;
         
             case 'Trabajos';
-                echo "traba";
+            echo "<form method='post' action='eliminar.php'>
+                        <fieldset>
+                            <legend>Eliminar Trabajo:</legend>";
+                            trabajos();
+                             echo "<p><input type='submit' name='botonEliminarTrabajo' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
                 break;
         
             case 'Ubicacion';
                 echo "<form method='post' action='eliminar.php'>
                         <fieldset>
-                            <legend>Completa los campos:</legend>
-                            <input type='text' name='ubicacion' placeholder='Ubicacion_ID' required>
-                            <input type='text' name='grupo' placeholder='Grupo Regional' required>
-                            <p><input type='submit' name='botonEliminarUbicacion' value='Enviar datos'></p>
+                            <legend>Eliminar Ubicacion:</legend>";
+                            ubicacion();
+                            echo "<p><input type='submit' name='botonEliminarUbicacion' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
                 break;

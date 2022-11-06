@@ -8,7 +8,7 @@
     //eliminar empleado
 
     //eliminar trabajos
-
+    
     //eliminar ubicacion
     if(isset($_POST['botonEliminarUbicacion'])) {
         $ubicacion = $_POST['ubicacion'];

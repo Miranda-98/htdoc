@@ -1,5 +1,30 @@
 <?php
     require_once "conexionBDPufosa.php";
+    include_once "mostrar.php";
+
+    function vendedor() {
+        try {
+            $conexion = conectar();
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "SELECT * FROM empleados ;";
+        
+            $result = $conexion->query($sql);
+            
+            echo "<select name='empleado'>";
+            
+            foreach($result as $fila){
+                
+                echo "<option value=".$fila['empleado_ID'].">".$fila['empleado_ID']."</option>";
+                
+            }
+            echo "</select>";
+        
+        } catch (PDOException $e) {
+            echo "conexion fallida: ".$e->getMessage();
+        }      
+    }
+
 
     function cliente() {    
         try {
@@ -56,7 +81,7 @@
         
             $result = $conexion->query($sql);
             
-            echo "<select name='empleado'>";
+            echo "<select name='vendedorID'>";
             
             foreach($result as $fila){
                 
@@ -70,6 +95,29 @@
         }
     
     }
+    function trabajosNombre() {
+        try {
+            $conexion = conectar();
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "SELECT * FROM departamento ;";
+        
+            $result = $conexion->query($sql);
+            
+            echo "<select name='trabajo2'>";
+            
+            foreach($result as $fila){
+                
+                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
+                
+            }
+            echo "</select>";
+        
+        } catch (PDOException $e) {
+            echo "conexion fallida: ".$e->getMessage();
+        }
+    }
+
 
     function trabajos() {    
         try {

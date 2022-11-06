@@ -1,6 +1,7 @@
 <?php 
     require "conexionBDPufosa.php";
 
+    
     if(isset($_POST['botonEnviarCliente'])){
         $cliente_ID = $_POST['cliente'];
         $nombre = $_POST['nombre'];
@@ -10,14 +11,12 @@
         $cPostal = $_POST['codigoPostal'];
         $cArea = $_POST['codigoArea'];
         $telefono = $_POST['telefono'];
-        $vendedor = $_POST['vendedorID'];
+        $vendedor = $_POST['empleado'];
         $limiteCredito = $_POST['limite'];
         $comentarios = $_POST['comentario'];
 
-        echo "paaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" . $cliente_ID;
 
         try {
-            
             $conecta = conectar();
             $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -124,7 +123,6 @@
         $Apellido = $_POST['apellido'];
         $Nombre = $_POST['nombre'];
         $Inicial_del_segundo_apellido = $_POST['inicial'];
-        echo "eeeeeeeeeeeeeeeeeeeeeeee".$_POST['trabajo'];
         $Trabajo_ID = $_POST['trabajo'];
         $Jefe_ID = $_POST['jefe'];
         $Fecha_contrato = $_POST['fechaContrato'];
