@@ -63,6 +63,18 @@
                 $sqlP->execute();
 
                 echo "cliente registrado correctamente";
+
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " añadir nuevo cliente -> id " . $_POST['cliente']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+                fclose($archivo);
         }
 
 
@@ -123,7 +135,7 @@
         $Apellido = $_POST['apellido'];
         $Nombre = $_POST['nombre'];
         $Inicial_del_segundo_apellido = $_POST['inicial'];
-        $Trabajo_ID = $_POST['trabajo'];
+        $Trabajo_ID = $_POST['trabajos'];
         $Jefe_ID = $_POST['jefe'];
         $Fecha_contrato = $_POST['fechaContrato'];
         $Salario = $_POST['salario'];
@@ -180,7 +192,7 @@
 
 
         } catch (PDOException $e) {
-            echo "error " . $e;
+            echo "ya existe un usuarios con esa Identificacion";
         }
 
 

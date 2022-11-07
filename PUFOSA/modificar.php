@@ -1,19 +1,133 @@
 <?php
     require_once "conexionBDPufosa.php";
-    function modificarCliente() {
 
+
+    if(isset($_POST['botonModificarCliente'])) {
+        $cliente_ID = $_POST['cliente'];
+        $nombre = $_POST['nombre'];
+        $direccion = $_POST['direccion'];
+        $ciudad = $_POST['ciudad'];
+        $estado = $_POST['estado'];
+        $cPostal = $_POST['codigoPostal'];
+        $cArea = $_POST['codigoArea'];
+        $telefono = $_POST['telefono'];
+        $vendedor = $_POST['empleado'];
+        $limiteCredito = $_POST['limite'];
+        $comentarios = $_POST['comentario'];
+
+        try{
+            $conecta = conectar();
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "UPDATE cliente SET CLIENTE_ID = :clie, nombre = :nom, Direccion = :dir, Ciudad = :ciu,
+             Estado = :est, CodigoPostal = :cp, CodigoDeArea = :ca, Telefono = :tl, Vendedor_ID = :vid,
+              Limite_De_Credito = :lim, Comentarios = :com WHERE CLIENTE_ID = $cliente_ID;";
+
+            //sentencia sql preparada
+            $sqlP = $conecta->prepare($sql);
+
+            //paso del valor
+            $sqlP->bindParam(":clie", $cliente_ID);
+            $sqlP->bindParam(":nom", $nombre);
+            $sqlP->bindParam(":dir", $direccion);
+            $sqlP->bindParam(":ciu", $ciudad);
+            $sqlP->bindParam(":est", $estado);
+            $sqlP->bindParam(":cp", $cPostal);
+            $sqlP->bindParam(":ca", $cArea);
+            $sqlP->bindParam(":tl", $telefono);
+            $sqlP->bindParam(":vid", $vendedor);
+            $sqlP->bindParam(":lim", $limiteCredito);
+            $sqlP->bindParam(":com", $comentarios);
+
+            //ejecutamos la inserccion
+            $sqlP->execute();
+            
+            echo "cliente actualizado correctamente";
+
+        } catch (PDOException $e) {
+            echo "error al modificar el cliente";
+        }
     }
 
-    function modificarDepartamento() {
+    if(isset($_POST['botonModificarDepartamento'])) {
+        $departamento = $_POST['departamento'];
+        $nombre = $_POST['nombre'];
+        $ubicacion = $_POST['ubicacion'];
 
+        try{
+            $conecta = conectar();
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            
+            $sql = "UPDATE departamento SET Nombre=:nom, Ubicacion_ID=:ubi WHERE departamento_ID=$departamento;";
+
+            //sentencia sql preparada
+            $sqlP = $conecta->prepare($sql);
+
+            
+            //paso del valor
+            $sqlP->bindParam(":nom", $nombre);
+            $sqlP->bindParam(":ubi", $ubicacion);
+
+            
+            //ejecutamos la inserccion
+            $sqlP->execute();
+
+            echo "departamento actualizado correctamente";
+    
+
+        } catch (PDOException $e){
+            echo "error al modificar el departamento".$e->getMessage();
+            
+        } 
     }
 
-    function modificarEmpleado() {
+    if(isset($_POST['botonModificarEmpleado'])) {
+        $empleado = $_POST['empleados'];
+        $apellido = $_POST['apellido'];
+        $nombre = $_POST['nombre'];
+        $inicial = $_POST['inicial'];
+        $trabajo = $_POST['trabajos'];
+        $jefe = $_POST['empleado'];
+        $fecha = $_POST['fechaContrato'];
+        $salario = $_POST['salario'];
+        $comision = $_POST['comision'];
+        $departamento = $_POST['departamento'];
 
+        try{
+            $conecta = conectar();
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "UPDATE empleados SET Apellido = :ape, Nombre = :nom, Inicial_del_segundo_apellido = :ini, 
+            Trabajo_ID = :tra, Jefe_ID = :jef, Fecha_contrato = :fec, Salario = :sal, Comision = :com, Departamento_ID = :dep 
+            WHERE empleado_ID=$empleado;";
+
+            //sentencia sql preparada
+            $sqlP = $conecta->prepare($sql);
+
+            //paso del valor
+            $sqlP->bindParam(":ape", $apellido);
+            $sqlP->bindParam(":nom", $nombre);
+            $sqlP->bindParam(":ini", $inicial);
+            $sqlP->bindParam(":tra", $trabajo);
+            $sqlP->bindParam(":jef", $jefe);
+            $sqlP->bindParam(":fec", $fecha);
+            $sqlP->bindParam(":sal", $salario);
+            $sqlP->bindParam(":com", $comision);
+            $sqlP->bindParam(":dep", $departamento);
+
+            //ejecutamos la inserccion
+            $sqlP->execute();
+            
+            echo "empleado actualizado correctamente";
+
+        } catch (PDOException $e) {
+            echo "error al modificar el empleado";
+        }
     }
 
-    function modificarTrabajo() {
-        $trabajo = $_POST['trabajo'];
+    if(isset($_POST['botonModificarTrabajo'])) {
+        $trabajo = $_POST['trabajos'];
         $funcion = $_POST['funcion'];
 
         try{
@@ -38,7 +152,7 @@
     
 
         } catch (PDOException $e){
-            echo "error al ingresar usuario".$e->getMessage();
+            echo "error al modificar el trabajo".$e->getMessage();
             
         } 
     }
@@ -66,11 +180,11 @@
             //ejecutamos la inserccion
             $sqlP->execute();
 
-            echo "usuario actualizado correctamente";
+            echo "ubicacion actualizado correctamente";
     
 
         } catch (PDOException $e){
-            echo "error al ingresar usuario".$e->getMessage();
+            echo "error al ingresar ubicacion".$e->getMessage();
         }
     }
 

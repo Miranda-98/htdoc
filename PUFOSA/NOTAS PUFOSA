@@ -1,5 +1,0 @@
-select empleado_ID, Apellido, empleados.Nombre, departamento.Nombre from empleados
-inner join departamento on
-empleados.Departamento_ID = departamento.departamento_ID
-ORDER BY departamento.Nombre DESC;
-

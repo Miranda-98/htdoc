@@ -175,13 +175,87 @@
         }
     }
 
+
+    function mostrarClienteSimple() {
+        try {
+            $conexion = conectar();
+            $sql = "SELECT cliente.CLIENTE_ID, cliente.nombre, cliente.Ciudad, empleados.Apellido, cliente.Limite_De_Credito
+                    from cliente
+                        inner join empleados
+                            on  empleados.empleado_ID = cliente.Vendedor_ID;";
+
+            $result = $conexion->query($sql);
+
+            echo "<table border=solid black 1px>
+            <th colspan=11>TABLA EMPLEADOS</th>
+                        <tr>
+                            <td>CLIENTE_ID</td>
+                            <td>NOMBRE CLIENTE</td>
+                            <td>CIUDAD CLIENTE</td>
+                            <td>APELLIDO VENDEDOR ASOCIADO</td>
+                            <td>LIMITE CREDITO CLIENTE</td>
+                        </tr>"; 
+
+
+
+            foreach($result as $fila){
+                echo " <tr>
+                <td>".$fila['CLIENTE_ID']."</td>", 
+                "<td>".$fila['nombre']."</td>", 
+                "<td>".$fila['Ciudad']."</td>", 
+                "<td>".$fila['Apellido']."</td>",
+                "<td>".$fila['Limite_De_Credito']."</td></tr>";
+
+
+            }
+
+        }  catch (PDOException $e) {
+            echo "error " . $e;
+        }
+    }
+
+    function mostrarDepartamentoSimple() {
+        try {
+            $conexion = conectar();
+            $sql = "SELECT departamento.Nombre, ubicacion.GrupoRegional
+                FROM departamento
+                    INNER JOIN ubicacion
+                        ON  departamento.Ubicacion_ID = ubicacion.Ubicacion_ID;";
+
+            $result = $conexion->query($sql);
+
+            echo "<table border=solid black 1px>
+            <th colspan=11>TABLA EMPLEADOS</th>
+                        <tr>
+                            <td>NOMBRE DEPARTAMENTO</td>
+                            <td>UBICACION DEPARTAMENTO</td>
+                        </tr>"; 
+
+
+
+            foreach($result as $fila){
+                echo " <tr>
+                <td>".$fila['Nombre']."</td>", 
+                "<td>".$fila['GrupoRegional']."</td></tr>";
+
+
+            }
+
+        }  catch (PDOException $e) {
+            echo "error " . $e;
+        }
+    }
+
     function mostrarEmpleadosSimple() {
         try{
             $conexion = conectar();
-            $sql = "SELECT empleado_ID, Apellido, empleados.Nombre AS NombreEmpleado, departamento.Nombre FROM empleados
-            INNER JOIN departamento ON
-            empleados.Departamento_ID = departamento.departamento_ID
-            ORDER BY departamento.Nombre DESC;;";
+            $sql = "SELECT empleado_ID, Apellido, empleados.Nombre, trabajos.Funcion, departamento.Nombre as labor
+            from empleados
+                inner join trabajos
+                    on empleados.Trabajo_ID = trabajos.Trabajo_ID
+                inner join departamento
+                    on empleados.Departamento_ID = departamento.departamento_ID
+                ORDER BY labor;";
             $result = $conexion->query($sql);
     
         echo "<table border=solid black 1px>
@@ -190,6 +264,7 @@
                         <td>Empleado_ID</td>
                         <td>Apellido</td>
                         <td>Nombre</td>
+                        <td>Labor</td>
                         <td>Departamento_ID</td>
                     </tr>"; 
         
@@ -199,7 +274,8 @@
             echo " <tr>
             <td>".$fila['empleado_ID']."</td>", 
             "<td>".$fila['Apellido']."</td>", 
-            "<td>".$fila['NombreEmpleado']."</td>", 
+            "<td>".$fila['Nombre']."</td>", 
+            "<td>".$fila['labor']."</td>",
             "<td>".$fila['Nombre']."</td></tr>";
 
 
@@ -209,4 +285,5 @@
             echo "error " . $e;
         }
     }
+
 ?>

@@ -53,6 +53,7 @@
             "<td>".$fila['Comision']."</td>", 
             "<td>".$fila['Departamento_ID']."</td></tr>";
 
+            $usuario = $fila['empleado_ID'];
             $pass = $fila['Inicial_del_segundo_apellido']."".$fila['empleado_ID'];
             $id = $fila['Trabajo_ID'];
         }
@@ -61,11 +62,36 @@
             echo "usuario valido";
 
             if ($id == 671 || $id == 672) {
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    echo "pufosa.txt";
+                    fwrite($archivo, $usuario."\ ");
+                }
+
+
+                fclose($archivo);
+
+
                 $url = "paginaAdmin.php";
                 echo "<SCRIPT>window.location='$url';</SCRIPT>";
             } else {
-                $url = "user.html";
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    echo "pufosa.txt";
+                    fwrite($archivo, $usuario."\ ");
+                }
+
+
+                fclose($archivo);
+                
+
+                $url = "paginaNoAdmin.php";
                 echo "<SCRIPT>window.location='$url';</SCRIPT>";
+
             }
         } else {
             echo '<script language="javascript">alert("los datos introducidos no son correctos");</script>';

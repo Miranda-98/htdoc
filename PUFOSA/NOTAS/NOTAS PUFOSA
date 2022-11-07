@@ -1,0 +1,26 @@
+/* inner join para CRUD de empleados */
+select empleado_ID, Apellido, empleados.Nombre, departamento.Nombre from empleados
+inner join departamento on
+empleados.Departamento_ID = departamento.departamento_ID
+ORDER BY departamento.Nombre DESC;
+
+/* falta si o si*/
+AÑADIR TABLA DE APOYO PARA ELIMINAR ELEMENTOS DE LA BASE DE DATOS
+
+/* deberia agregar */
+en las tablas de modificar el valor previo -> nombre: maria -> que aparezca en el input y se pueda escribir sobre el para modicarlo
+ponerlo bonito
+REEDME -> explicacion de lo que hay en cada archivo
+poner muchos comentarios
+diagrama de flujo de como se conectan las paginas
+cambiar el lugar de donde se añaden el usuario LOG
+
+INFORME DEL PRESIDENTE -> 
+    SELECT COUNT(empleados.empleado_ID) as numEmpleados, departamento.departamento_ID as departamento, departamento.Nombre as departamentoNombre, ubicacion.GrupoRegional as ciudad, ROUND(MAX(empleados.Salario),2) as maximoSalario, ROUND(MIN(empleados.Salario),2) as minimoSalario, ROUND(AVG(empleados.Salario),2) as medioSalario
+	FROM empleados 
+    	inner join departamento
+        	on empleados.Departamento_ID = departamento.departamento_ID
+        inner join ubicacion 
+        	on departamento.Ubicacion_ID = ubicacion.Ubicacion_ID 
+        GROUP BY departamento.departamento_ID
+        ORDER BY `ubicacion`.`Ubicacion_ID` ASC

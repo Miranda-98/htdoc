@@ -6,6 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAGINA ADMIN</title>
 </head>
+
+
+<body>
+    <h2>ADMIN</h2>
+    <form method="POST" >
+        <select name="tabla" id="selectorTabla">
+            <option ><?php echo $nombre = "SELECIONA UNA TABLA" ?></option>
+            <option value="Cliente">Cliente</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Empleados">Empleados</option>
+            <option value="Trabajos">Trabajos</option>
+            <option value="Ubicacion">Ubicacion</option>
+        </select>
+        <input type="submit" id="botonTabla" name="botonTablaMostrar" value="Mostrar Tabla!">
+        <input type="submit" id="añadirTabla" name="botonTablaAñadir" value="Añadir Tabla!">
+        <input type="submit" id="modificarTabla" name="botonTablaModificar" value="Modificar Tabla!">
+        <input type="submit" id="borrarTabla" name="botonTablaEliminar" value="Borrar Tabla!">
+    </form>
+
+</body>
+</html>
+
 <?php 
     require "conexionBDPufosa.php";
     require "mostrar.php";
@@ -13,7 +35,7 @@
     require "eliminar.php";
     require "selectID.php";
 
-    $nombre = "SELECIONA UNA TABLA";
+    //$nombre = "SELECIONA UNA TABLA";
 
 
     if(isset($_POST['botonTablaMostrar'])){
@@ -119,26 +141,69 @@
     if(isset($_POST['botonTablaModificar'])) {
         switch($_POST['tabla']){
             case 'Cliente';
-                echo "clieeeeeeeee";
+                    echo "<form method='post' action='modificar.php'>
+                        <fieldset>
+                            <legend>Añadir Cliente:</legend>";
+                            cliente();
+                            echo "<input type='text' name='nombre' placeholder='Nombre' required>
+                            <input type='text' name='direccion' placeholder='Direccion' required>
+                            <input type='text' name='ciudad' placeholder='Ciudad' required>
+                            <input type='text' name='estado' placeholder='Estado' required>
+                            <input type='text' name='codigoPostal' placeholder='Codigo Postal' required>
+                            <input type='text' name='codigoArea' placeholder='Codigo de Area' required>
+                            <input type='text' name='telefono' placeholder='Telefono' required>";
+                            vendedor();
+                            echo "<input type='text' name='limite' placeholder='Limite de Credito' required>
+                            <input type='text' name='comentario' placeholder='Comentarios' required>
+                            <p><input type='submit' name='botonModificarCliente' value='Enviar Datos'></p>
+                        </fieldset>
+                    </form>";
+                mostrarCliente();
                 break;
             
             case 'Departamento';
-                echo "depa";
+                    echo "<form method='post' action='modificar.php'>
+                        <fieldset>
+                            <legend>Modificar Departamento:</legend>";
+                            departamento();
+                            echo "<input type='text' name='nombre' placeholder='Nombre' required>";
+                            ubicacion();
+                            echo "<p><input type='submit' name='botonModificarDepartamento' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
+                    mostrarDepartamento();
                 break;
         
             case 'Empleados';
-                echo "emplee";
+                    echo "<form method='post' action='modificar.php'>
+                            <fieldset>
+                            <legend>Modificar Empleados:</legend>";
+                            empleados();
+                            echo "<input type='text' name='apellido' placeholder='Apellido' >
+                            <input type='text' name='nombre' placeholder='Nombre' >
+                            <input type='text' name='inicial' placeholder='Inicial Segundo Apellido' >";
+                            trabajos();
+                            vendedor();
+                            echo "<input type='date' name='fechaContrato' placeholder='Fecha Contrato' >
+                            <input type='text' name='salario' placeholder='Salario' >
+                            <input type='text' name='comision' placeholder='Comision' >";
+                            departamento();
+                            echo "<p><input type='submit' name='botonModificarEmpleado' value='Enviar datos'></p>
+                        </fieldset>
+                    </form>";
+                    mostrarEmpleados();
                 break;
         
             case 'Trabajos';
                 echo "<form method='post' action='modificar.php'>
                         <fieldset>
-                            <legend>Modificar Trabajo:</legend>
-                            <input type='text' name='trabajo' placeholder='Trabajo' required>
-                            <input type='text' name='funcion' placeholder='Funcion' required>
+                            <legend>Modificar Trabajo:</legend>";
+                            trabajos();
+                            echo "<input type='text' name='funcion' placeholder='Funcion' required>
                             <p><input type='submit' name='botonModificarTrabajo' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
+                    mostrarEmpleados();
                 break;
         
             case 'Ubicacion';
@@ -150,6 +215,7 @@
                             <p><input type='submit' name='botonModificarUbicacion' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
+                    mostrarUbicacion();
                 break;
         
         }
@@ -158,38 +224,29 @@
     if(isset($_POST['botonTablaEliminar'])) {
         switch($_POST['tabla']){
             case 'Cliente';
+            mostrarClienteSimple();
                 echo "<form method='post' action='eliminar.php'>
                         <fieldset>
-                            <legend>Eliminar Cliente:</legend>
-                            <input type='text' name='cliente' placeholder='Cliente' required>
-                            <input type='text' name='nombre' placeholder='Nombre' required>
-                            <input type='text' name='direccion' placeholder='Direccion' required>
-                            <input type='text' name='ciudad' placeholder='Ciudad' required>
-                            <input type='text' name='estado' placeholder='Estado' required>
-                            <input type='text' name='codigoPostal' placeholder='Codigo Postal' required>
-                            <input type='text' name='codigoArea' placeholder='Codigo de Area' required>
-                            <input type='text' name='telefono' placeholder='Telefono' required>";
-                            empleados();
-                            echo "<input type='text' name='limite' placeholder='Limite de Credito' required>
-                            <input type='text' name='comentario' placeholder='Comentarios' required>
-                            <p><input type='submit' name='botonEliminarCliente' value='Enviar Datos'></p>
+                            <legend>Eliminar Cliente:</legend>";
+                            cliente();
+                            echo "<p><input type='submit' name='botonEliminarCliente' value='Enviar Datos'></p>
                         </fieldset>
                     </form>";
                 break;
             
             case 'Departamento';
+            mostrarDepartamentoSimple();
                 echo "<form method='post' action='eliminar.php'>
                         <fieldset>
-                            <legend>Eliminar Departamento:</legend>
-                            <input type='text' name='departamento' placeholder='Departamento ID' required>
-                            <input type='text' name='nombre' placeholder='Nombre' required>";
-                            ubicacion();
+                            <legend>Eliminar Departamento:</legend>";
+                            departamento();
                             echo "<p><input type='submit' name='botonEliminarDepartamento' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
                 break;
         
             case 'Empleados';
+            mostrarEmpleadosSimple();
                 echo "<form method='post' action='eliminar.php'>
                                 <fieldset>
                                 <legend>Eliminar Empleado:</legend>";
@@ -200,6 +257,7 @@
                 break;
         
             case 'Trabajos';
+            mostrarTrabajos();
             echo "<form method='post' action='eliminar.php'>
                         <fieldset>
                             <legend>Eliminar Trabajo:</legend>";
@@ -210,6 +268,7 @@
                 break;
         
             case 'Ubicacion';
+            mostrarUbicacion();
                 echo "<form method='post' action='eliminar.php'>
                         <fieldset>
                             <legend>Eliminar Ubicacion:</legend>";
@@ -222,26 +281,5 @@
         }
     }
 
-
-
-    
+    echo "<a href='informesLOG.php'>Mostrar Informe de modificacines</a>"
 ?>
-
-<body>
-    <h2>ADMIN</h2>
-    <form method="POST" action="">
-        <select name="tabla" id="selectorTabla">
-            <option ><?php echo $nombre ?></option>
-            <option value="Cliente">Cliente</option>
-            <option value="Departamento">Departamento</option>
-            <option value="Empleados">Empleados</option>
-            <option value="Trabajos">Trabajos</option>
-            <option value="Ubicacion">Ubicacion</option>
-        </select>
-        <input type="submit" id="botonTabla" name="botonTablaMostrar" value="Mostrar Tabla!">
-        <input type="submit" id="añadirTabla" name="botonTablaAñadir" value="Añadir Tabla!">
-        <input type="submit" id="modificarTabla" name="botonTablaModificar" value="Modificar Tabla!">
-        <input type="submit" id="borrarTabla" name="botonTablaEliminar" value="Borrar Tabla!">
-    </form>
-</body>
-</html>

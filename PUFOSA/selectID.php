@@ -35,7 +35,7 @@
         
             $result = $conexion->query($sql);
             
-            echo "<select name='clienteID'>";
+            echo "<select name='cliente'>";
             
             foreach($result as $fila){
                 
@@ -81,7 +81,7 @@
         
             $result = $conexion->query($sql);
             
-            echo "<select name='vendedorID'>";
+            echo "<select name='empleados'>";
             
             foreach($result as $fila){
                 
@@ -128,7 +128,7 @@
         
             $result = $conexion->query($sql);
             
-            echo "<select name='trabajo'>";
+            echo "<select name='trabajos'>";
             
             foreach($result as $fila){
                 
