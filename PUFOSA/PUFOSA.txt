@@ -5,4 +5,4 @@ id nuevo cliente6 \ November 6, 2022, 11:32 pm
  id nuevo cliente 9 \ November 6, 2022, 11:34 pm 
   añadir nuevo cliente -> id 10 \ November 6, 2022, 11:35 pm 
  7499\  añadir nuevo cliente -> id 11 \ November 6, 2022, 11:45 pm 
- 
+ 7369\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 

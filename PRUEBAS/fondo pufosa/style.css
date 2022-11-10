@@ -1,0 +1,33 @@
+:root {
+    /*--fondo: #4C0033;*/
+    --fondo: rgb(76, 0, 51 ,.95);
+    --fondoBoton: #AF0171;
+}
+
+
+
+h1 {
+    position: absolute;
+    font-size: 350px;
+    left: 5%;
+    top: -10%;
+}
+
+/* div contenedor*/
+.div-registro{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 40px;
+    transform: translate( -50%, -50%);
+    background: var(--fondo);
+    box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
+    width: 500px;
+    height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 50px;
+}

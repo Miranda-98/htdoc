@@ -14,6 +14,9 @@ REEDME -> explicacion de lo que hay en cada archivo
 poner muchos comentarios
 diagrama de flujo de como se conectan las paginas
 cambiar el lugar de donde se añaden el usuario LOG
+label a los formularios 
+separar manager de presidente para el informe ok
+cambiar js windows.onload -> head(location)
 
 INFORME DEL PRESIDENTE -> 
     SELECT COUNT(empleados.empleado_ID) as numEmpleados, departamento.departamento_ID as departamento, departamento.Nombre as departamentoNombre, ubicacion.GrupoRegional as ciudad, ROUND(MAX(empleados.Salario),2) as maximoSalario, ROUND(MIN(empleados.Salario),2) as minimoSalario, ROUND(AVG(empleados.Salario),2) as medioSalario
