@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login PUFOSA</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div id="k">
+        <p><?php echo $_GET['msg'] ?></p>
+        <h1>PUFOSA</h1>
+        <div class="div-registro">
+            <form method="POST" action="">
+                <div id="div-usuarios">
+                    <input type="text" id="usuario" name="user" placeholder="Usuario" required>
+                </div>
+                <div id="div-contraseña">
+                    <input type="text" id="contraseña" name="password" placeholder="Contraseña" required>
+                </div>
+                <div id="div-botones">
+                    <input type="submit" id="botonRegistro" name="botonRegistro" value="Entrar!">
+                    <input type="reset" id="botonReset" value="Borrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
 <?php
     require "conexionBDPufosa.php";
 
@@ -67,16 +103,13 @@
                 fclose($archivo);
 
 
-                header("location:paginaPresidente.php");
+                header("location:paginaPresidente.php ? msg=$nombreR");
                 die();
 
             } else {
                 $archivo = fopen("PUFOSA.txt", "a+b");
                 if (!$archivo) {
                     echo "error al abrir el fichero";
-                } else {
-                    echo "pufosa.txt";
-                    fwrite($archivo, $usuario."\ ");
                 }
 
 

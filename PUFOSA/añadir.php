@@ -14,6 +14,8 @@
         $vendedor = $_POST['empleado'];
         $limiteCredito = $_POST['limite'];
         $comentarios = $_POST['comentario'];
+        $IDREGISTRADO = $_POST['pepe'];
+
 
 
         try {
@@ -70,6 +72,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " añadir nuevo cliente -> id " . $_POST['cliente']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);
@@ -129,6 +132,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " añadir nuevo departamento -> nombre " . $_POST['nombre']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);
@@ -207,6 +211,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " añadir nuevo empleado -> id " . $_POST['empleado']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);
@@ -260,6 +265,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " añadir nuevo trabajo -> nombre " . $_POST['trabajo']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);
@@ -310,6 +316,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " añadir nueva ubicacion -> ciudad " . $_POST['grupo']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);

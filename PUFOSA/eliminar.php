@@ -3,6 +3,7 @@
     //estructura borrar generico
     function borrarElementoBorrar($borrar) {
         $borrar = $_POST['$borrar'];
+       
         
         try{
             $conecta = conectar();
@@ -32,6 +33,7 @@
     //eliminar cliente
     if(isset($_POST['botonEliminarCliente'])) {
         $cliente = $_POST['cliente'];
+        $IDREGISTRADO = $_POST['pepe'];
         
         try{
             $conecta = conectar();
@@ -56,6 +58,7 @@
                 if (!$archivo) {
                     echo "error al abrir el fichero";
                 } else {
+                    fwrite($archivo, $IDREGISTRADO."\ ");
                     $escribe = " eliminar cliente -> id " . $_POST['cliente']. " \ ".date("F j, Y, g:i a"). " \n "  ;
                     fwrite($archivo, $escribe); 
                     rewind($archivo);

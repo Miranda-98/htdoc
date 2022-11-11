@@ -11,5 +11,11 @@ id nuevo cliente6 \ November 6, 2022, 11:32 pm
   modificar trabajo -> trabajo 2 \ November 11, 2022, 3:49 am 
   eliminar ubicacion -> ubicacion 1 \ November 11, 2022, 3:53 am 
   añadir nuevo cliente -> id 0 \ November 11, 2022, 3:55 am 
-  añadir nuevo cliente -> id 1 \ November 11, 2022, 3:56 am 
+  añadir nuevo cliente -> id 1 \ November 11, 2022, 3:56 am 7839\  añadir nuevo cliente -> id a \ November 11, 2022, 12:09 pm 
+ 7839\  añadir nuevo cliente -> id 0 \ November 11, 2022, 12:11 pm 
+ eliminar cliente -> id 0 \ November 11, 2022, 12:23 pm 
+ \  eliminar cliente -> id 1 \ November 11, 2022, 12:24 pm 
+ \  eliminar cliente -> id 1 \ November 11, 2022, 12:25 pm 
+ \  eliminar cliente -> id 2 \ November 11, 2022, 12:26 pm 
+ 7839\ 7839\  eliminar cliente -> id 3 \ November 11, 2022, 12:28 pm 
  
