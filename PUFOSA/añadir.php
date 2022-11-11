@@ -25,7 +25,9 @@
             $resultado = $conecta->query($sqlComprobar);
             $num = $resultado->fetch();
             if($num['cantidad']>0) {
-                echo "el cliente ya esta registrada en la base de datos";//quitarlo
+                echo '<script language="javascript">alert("el cliente ya esta registrado en la base de datos");</script>';
+                $url = "paginaPresidente.php";
+                echo "<SCRIPT>window.location='$url';</SCRIPT>";
             } else {
                 //sentencia sql preparada
                 $sqlP = $conecta->prepare("INSERT INTO cliente (CLIENTE_ID, nombre, Direccion, Ciudad,
@@ -79,7 +81,7 @@
 
 
         } catch (PDOException $e) {
-            echo "error " . $e;
+            echo '<script language="javascript">alert("error "+$e);</script>';
         }
     
     
@@ -122,6 +124,18 @@
                 $sqlP->execute();
 
                 echo "departamento registrado correctamente";
+
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " añadir nuevo departamento -> nombre " . $_POST['nombre']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+                fclose($archivo);
             }
 
         } catch (PDOException $e) {
@@ -188,6 +202,18 @@
                 $sqlP->execute();
 
                 echo "empleado registrado correctamente";
+
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " añadir nuevo empleado -> id " . $_POST['empleado']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+                fclose($archivo);
         }
 
 
@@ -229,6 +255,18 @@
                 $sqlP->execute();
 
                 echo "trabajo registrado correctamente";
+
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " añadir nuevo trabajo -> nombre " . $_POST['trabajo']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+                fclose($archivo);
             }
 
         } catch (PDOException $e) {
@@ -267,6 +305,18 @@
                 $sqlP->execute();
 
                 echo "ubicacion registrado correctamente";
+
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " añadir nueva ubicacion -> ciudad " . $_POST['grupo']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+                fclose($archivo);
             }
 
         } catch (PDOException $e) {

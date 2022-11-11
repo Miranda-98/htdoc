@@ -37,7 +37,22 @@
         if ($pass == $contraseñaR) {
             echo "usuario valido";
 
-            if (($id == 671 )|| ($id == 672)) {
+            if (($id == 671 )) {
+                $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    echo "pufosa.txt";
+                    fwrite($archivo, $usuario."\ ");
+                }
+
+
+                fclose($archivo);
+
+
+                $url = "paginaManager.php";
+                echo "<SCRIPT>window.location='$url';</SCRIPT>";
+            } else if($id == 672) {
                 $archivo = fopen("PUFOSA.txt", "a+b");
                 if (!$archivo) {
                     echo "error al abrir el fichero";

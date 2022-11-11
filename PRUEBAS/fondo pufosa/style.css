@@ -9,9 +9,13 @@ body{
 }
 
 ::placeholder{
-    color: white;
+    color: gray;
 }
 
+.k{
+    width: 100%;
+    height: 100%;
+}
 h1 {
     position: relative;
     font-size: 230px;
@@ -52,6 +56,7 @@ h1 {
     border: none;
     border-bottom: 1px solid #fff;
     font-size: 30px;
+    color: white;
 }
 
 
@@ -63,6 +68,7 @@ h1 {
     border: none;
     border-bottom: 1px solid #fff;
     font-size: 30px;
+    color: white;   
 }
 
 #div-botones{

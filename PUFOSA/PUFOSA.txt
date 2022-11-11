@@ -5,4 +5,11 @@ id nuevo cliente6 \ November 6, 2022, 11:32 pm
  id nuevo cliente 9 \ November 6, 2022, 11:34 pm 
   añadir nuevo cliente -> id 10 \ November 6, 2022, 11:35 pm 
  7499\  añadir nuevo cliente -> id 11 \ November 6, 2022, 11:45 pm 
- 7369\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 7839\ 
+ 7839\  añadir nueva ubicacion -> ciudad Madrid \ November 11, 2022, 3:43 am 
+ 7839\ modificar trabajo -> trabajo 2 \ November 11, 2022, 3:49 am 
+  modificar trabajo -> trabajo 2 \ November 11, 2022, 3:49 am 
+  modificar trabajo -> trabajo 2 \ November 11, 2022, 3:49 am 
+  eliminar ubicacion -> ubicacion 1 \ November 11, 2022, 3:53 am 
+  añadir nuevo cliente -> id 0 \ November 11, 2022, 3:55 am 
+  añadir nuevo cliente -> id 1 \ November 11, 2022, 3:56 am 
+ 

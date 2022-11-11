@@ -51,6 +51,18 @@
             $sqlP->execute();
 
             echo "empleado eliminado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " eliminar cliente -> id " . $_POST['cliente']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
@@ -81,6 +93,17 @@
 
             echo "departamento eliminado correctamente";
     
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " eliminar departamento -> nombre " . $_POST['departamento']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
 
         } catch (PDOException $e){
             echo "no puedes eliminar un departamento en el que hay empleados";
@@ -109,6 +132,18 @@
             $sqlP->execute();
 
             echo "empleado eliminado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " eliminar empleado -> id " . $_POST['empleados']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
@@ -138,6 +173,18 @@
             $sqlP->execute();
 
             echo "trabajo eliminado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " eliminar trabajo -> trabajo " . $_POST['trabajos']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
@@ -167,6 +214,18 @@
             $sqlP->execute();
 
             echo "ubicacion eliminada correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " eliminar ubicacion -> ubicacion " . $_POST['ubicacion']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,27 @@
     <title>Login PUFOSA</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
-    <div class="div-registro" >
+    <div id="k">
+        <div class="div-registro">
             <label>Introduce tus datos</label>
             <form method="POST" action="login.php">
                 <div id="div-usuarios">
-                    <label class="user">Usuario</label><br/>
-                    <input type="text" id="usuario" name="user" placeholder="Usuario">
+                    <label class="user">Usuario</label><br />
+                    <input type="text" id="usuario" name="user" placeholder="Usuario" required>
                 </div>
                 <div id="div-contraseña">
-                    <label class="password">Contraseña</label><br/>
-                    <input type="text" id="contraseña" name="password" placeholder="Contraseña">
+                    <label class="password">Contraseña</label><br />
+                    <input type="text" id="contraseña" name="password" placeholder="Contraseña" required>
                 </div>
                 <div id="div-botones">
                     <input type="submit" id="botonRegistro" name="botonRegistro" value="Entrar!">
                     <input type="reset" id="botonReset" value="Borrar">
                 </div>
             </form>
+        </div>
     </div>
-    
 </body>
+
 </html>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAGINA USUARIOS</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
 </head>
 
 
@@ -13,7 +15,6 @@
     <form method="POST" >
         <select name="tabla" id="selectorTabla">
             <option value="Cliente">Cliente</option>
-            <option value="NO ADMIN">Si quieres tener permisos sobre otras tablas debes de ser administrados pillin &#128056 &#128075 &#128078 &#128110	&#128128 &#128148 &#128286 &#128540 &#128545 &#128584 &#128529	&#128530</option>
         </select>
         <input type="submit" id="botonTabla" name="botonTablaMostrar" value="Mostrar Tabla!">
         <input type="submit" id="añadirTabla" name="botonTablaAñadir" value="Añadir Tabla!">

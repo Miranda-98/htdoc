@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAGINA ADMIN</title>
+    <title>PAGINA PRESIDENTE</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 
 <body>
-    <h2>ADMIN</h2>
+    <h2>PRESIDENTE</h2>
     <form method="POST" >
         <select name="tabla" id="selectorTabla">
             <option ><?php echo $nombre = "SELECIONA UNA TABLA" ?></option>
@@ -203,7 +204,7 @@
                             <p><input type='submit' name='botonModificarTrabajo' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
-                    mostrarEmpleados();
+                    mostrarTrabajos();
                 break;
         
             case 'Ubicacion';

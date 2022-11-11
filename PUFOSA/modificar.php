@@ -44,6 +44,18 @@
             
             echo "cliente actualizado correctamente";
 
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " modificar cliente -> id " . $_POST['cliente']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
+
         } catch (PDOException $e) {
             echo "error al modificar el cliente";
         }
@@ -74,6 +86,18 @@
             $sqlP->execute();
 
             echo "departamento actualizado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " modificar departamento -> nombre " . $_POST['departamento']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
@@ -121,6 +145,18 @@
             
             echo "empleado actualizado correctamente";
 
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " modificar empleado -> nombre " . $_POST['empleados']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
+
         } catch (PDOException $e) {
             echo "error al modificar el empleado";
         }
@@ -149,6 +185,18 @@
             $sqlP->execute();
 
             echo "trabajo actualizado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " modificar trabajo -> trabajo " . $_POST['trabajos']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
@@ -181,6 +229,18 @@
             $sqlP->execute();
 
             echo "ubicacion actualizado correctamente";
+
+            $archivo = fopen("PUFOSA.txt", "a+b");
+                if (!$archivo) {
+                    echo "error al abrir el fichero";
+                } else {
+                    $escribe = " modificar ubicacion -> ubicacion " . $_POST['ubicacion']. " \ ".date("F j, Y, g:i a"). " \n "  ;
+                    fwrite($archivo, $escribe); 
+                    rewind($archivo);
+                }
+
+
+            fclose($archivo);
     
 
         } catch (PDOException $e){
