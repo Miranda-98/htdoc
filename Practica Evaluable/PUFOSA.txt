@@ -1,0 +1,11 @@
+7839\  añadir Cliente -> id 2  \ November 16, 2022, 1:00 am 
+ 7839\  añadir Cliente -> id 1  \ November 16, 2022, 1:07 am 
+ 672\  modificar  -> id   \ November 16, 2022, 1:07 am 
+ 7839\  modificar  -> id   \ November 16, 2022, 1:08 am 
+ 7654\  modificar  -> id   \ November 16, 2022, 1:09 am 
+ 7654\  modificar  -> id   \ November 16, 2022, 1:12 am 
+ 7654\  añadir Cliente -> id 2  \ November 16, 2022, 1:12 am 
+ 7654\  modificar  -> id 2  \ November 16, 2022, 1:13 am 
+ 7654\  borrar Cliente -> id 2  \ November 16, 2022, 1:13 am 
+ 7566\  añadir Cliente -> id 2  \ November 16, 2022, 1:14 am 
+ 
