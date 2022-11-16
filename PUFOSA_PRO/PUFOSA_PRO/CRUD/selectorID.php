@@ -1,28 +1,6 @@
 <?php
-    require_once "conexion.php";
-    //include_once "mostrar.php";
-    function departamentoNombre() {
-        try {
-            $conexion = conectar();
-            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            $sql = "SELECT * FROM departamento ;";
-        
-            $result = $conexion->query($sql);
-            
-            echo "<select name='departamentoNombre'>";
-            
-            foreach($result as $fila){
-                
-                echo "<option value=".$fila['Nombre'].">".$fila['Nombre']."</option>";
-                
-            }
-            echo "</select>";
-        
-        } catch (PDOException $e) {
-            echo "conexion fallida: ".$e->getMessage();
-        }      
-    }
+    require_once "conexionBDPufosa.php";
+    include_once "mostrar.php";
 
     function vendedor() {
         try {

@@ -12,7 +12,7 @@
 // include "mostrar.php";
 // include "selectorID.php";
 include "mostrarPRO.php";
-include "añadirPRO.php";
+include "añadir.php";
 include "eliminarPRO.php";
 include "selectID.php";
 //  include "conexion.php";
@@ -114,7 +114,7 @@ if (isset($_POST['botonTablaAñadir'])) {
     if ($_POST['tabla'] == 'Cliente') {
 
 
-        echo "<form method='post' action='añadirPRO.php'>
+        echo "<form method='post' action='añadir.php'>
                         <fieldset>
                         <input type='text' name='pepe' value=" . $_GET['user'] . ">
                         <input type='text' name='pepa' value=" . $_GET['registro'] . ">
@@ -138,20 +138,20 @@ if (isset($_POST['botonTablaAñadir'])) {
                     </form>";
     } else if ($_POST['tabla'] == 'Departamento') {
 
-        echo "<form method='post' action='añadirPRO.php'>
+        echo "<form method='post' action='añadir.php'>
                         <fieldset>
                         <input type='text' name='pepe' value=" . $_GET['user'] . ">
                         <input type='text' name='pepa' value=" . $_GET['registro'] . ">
                             <legend>Añadir Departamento:</legend>
-                            <input type='number' name='departamento' placeholder='Departamento ID' required>;
-                            <input type='text' name='nombre' placeholder='Nombre' required>";
+                            <input type='number' name='departamento' placeholder='Departamento ID' required>
+                            <input type='text' name='nombre' placeholder='Nombre Departamento' required>";
         ubicacion();
         echo "<p><input type='submit' name='botonEnviarDepartamento' value='Enviar datos'></p>
                         </fieldset>
                     </form>";
     } else if ($_POST['tabla'] == 'Empleados') {
 
-        echo "<form method='post' action='añadirPRO.php'>
+        echo "<form method='post' action='añadir.php'>
                                 <fieldset>
                                 <input type='text' name='pepe' value=" . $_GET['user'] . ">
                                  <input type='text' name='pepa' value=" . $_GET['registro'] . ">
@@ -171,7 +171,7 @@ if (isset($_POST['botonTablaAñadir'])) {
                         </form>";
     } else if ($_POST['tabla'] == 'Trabajos') {
 
-        echo "<form method='post' action='añadirPRO.php'>
+        echo "<form method='post' action='añadir.php'>
                         <fieldset>
                         <input type='text' name='pepe' value=" . $_GET['user'] . ">
                         <input type='text' name='pepa' value=" . $_GET['registro'] . ">
@@ -183,7 +183,7 @@ if (isset($_POST['botonTablaAñadir'])) {
                     </form>";
     } else if ($_POST['tabla'] == 'Ubicacion') {
 
-        echo "<form method='post' action='añadirPRO.php'>
+        echo "<form method='post' action='añadir.php'>
                         <fieldset>
                         <input type='text' name='pepe' value=" . $_GET['user'] . ">
                         <input type='text' name='pepa' value=" . $_GET['registro'] . ">

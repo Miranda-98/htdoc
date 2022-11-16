@@ -1,12 +1,8 @@
 <?php
+include ("../conexionBDPufosa.php");
 
-include "conexion.php";
 
-$conn = conectar();
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-//depende del formulario que se accione en pagina.php se usa una funcion u otra
-if (isset($_POST['botonEnviarCliente'])) {
+if (isset($_POST['botonEnviarCliente'])){
     insertar("Cliente");
 } else if (isset($_POST['botonEnviarDepartamento'])) {
     insertar("Departamento");
@@ -22,7 +18,6 @@ if (isset($_POST['botonEnviarCliente'])) {
 function insertar($tabla)
 {
 
-    //recogida de 
     if (isset($_POST['botonEnviarCliente'])) {
         $cliente_ID = $_POST['CLIENTE_ID'];
         $nombre = $_POST['nombre'];
@@ -35,19 +30,19 @@ function insertar($tabla)
         $vendedor = $_POST['empleado'];
         $limiteCredito = $_POST['limite'];
         $comentarios = $_POST['comentario'];
-        $IDREGISTRADO = $_REQUEST['pepe'];
-        $ID = $_REQUEST['pepa'];
+        $IDREGISTRADO = $_POST['pepe'];
 
-        $aDatosFormulario = [$cliente_ID, $nombre, $direccion, $ciudad, $estado, $cPostal, $cArea, $telefono, $vendedor, $limiteCredito, $comentarios];
-    }
-    if (isset($_POST['botonEnviarDepartamento'])) {
+        $aDatosFormulario = [$cliente_ID,$nombre,$direccion,$ciudad,$estado,$cPostal,$cArea,$telefono,$vendedor,$limiteCredito,$comentarios];
+
+    } 
+     if (isset($_POST['botonEnviarDepartamento'])) {
         $departamento = $_POST['departamento'];
         $nombre = $_POST['nombre'];
         $ubicacion = $_POST['ubicacion'];
-        $IDREGISTRADO = $_REQUEST['pepe'];
-        $ID = $_REQUEST['pepa'];
+        $IDREGISTRADO = $_POST['pepe'];
 
         $aDatosFormulario = [$departamento, $nombre, $ubicacion];
+
     } else if (isset($_POST['botonEnviarEmpleado'])) {
         $empleado_ID = $_POST['empleado'];
         $Apellido = $_POST['apellido'];
@@ -59,23 +54,22 @@ function insertar($tabla)
         $Salario = $_POST['salario'];
         $Comision = $_POST['comision'];
         $Departamento_ID = $_POST['departamento'];
-        $IDREGISTRADO = $_REQUEST['pepe'];
-        $ID = $_REQUEST['pepa'];
+        $IDREGISTRADO = $_POST['pepe'];
 
         $aDatosFormulario = [$empleado_ID, $Apellido, $Nombre, $Inicial_del_segundo_apellido, $Trabajo_ID, $Jefe_ID, $Fecha_contrato, $Salario, $Comision, $Departamento_ID];
+
     } else if (isset($_POST['botonEnviarTrabajo'])) {
         $trabajo = $_POST['trabajo'];
         $funcion = $_POST['funcion'];
-        $IDREGISTRADO = $_REQUEST['pepe'];
-        $ID = $_REQUEST['pepa'];
+        $IDREGISTRADO = $_POST['pepe'];
 
         $aDatosFormulario = [$trabajo, $funcion];
+
     } else if (isset($_POST['botonEnviarUbicacion'])) {
         $ubi = $_POST['ubicacion'];
         $grupo = $_POST['grupo'];
-        $IDREGISTRADO = $_REQUEST['pepe'];
-        $ID = $_REQUEST['pepa'];
-
+        $IDREGISTRADO = $_POST['pepe'];
+        
         $aDatosFormulario = [$ubi, $grupo];
     }
 
@@ -87,72 +81,63 @@ function insertar($tabla)
     $camposUbicacion = "Ubicacion_ID/GrupoRegional";
 
     if ($tabla == "Cliente") {
-        $camposTabla = explode("/", $camposCliente); //genera un array
-        $camposTablaInsert = str_replace("/", ",", $camposCliente);
+        $camposTabla = explode("/", $camposCliente);//genera un array
+        $camposTablaInsert= str_replace("/",",",$camposCliente);
     } else if ($tabla == "Departamento") {
         $camposTabla = explode("/", $camposDepartamento);
-        $camposTablaInsert = str_replace("/", ",", $camposDepartamento);
+        $camposTablaInsert= str_replace("/",",",$camposDepartamento);
     } else if ($tabla == "Empleados") {
         $camposTabla = explode("/", $camposEmpleados);
-        $camposTablaInsert = str_replace("/", ",", $camposEmpleados);
+        $camposTablaInsert= str_replace("/",",",$camposEmpleados);
     } else if ($tabla == "Trabajos") {
         $camposTabla = explode("/", $camposTrabajos);
-        $camposTablaInsert = str_replace("/", ",", $camposTrabajos);
+        $camposTablaInsert= str_replace("/",",",$camposTrabajos);
     } else if ($tabla == "Ubicacion") {
         $camposTabla = explode("/", $camposUbicacion);
-        $camposTablaInsert = str_replace("/", ",", $camposUbicacion);
+        $camposTablaInsert= str_replace("/",",",$camposUbicacion);
     }
 
     try {
         $conexion = conectar();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         
-
-        //echo $aDatosFormulario[0],$aDatosFormulario[0],$aDatosFormulario[2];
-        echo implode(',', $aDatosFormulario);
-        echo $camposTablaInsert;
-        $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM " . strtolower($tabla) . " WHERE " . $camposTabla[0] . " = " . $aDatosFormulario[0] . ";";
+        echo count($camposTabla);
+        
+        
+        $sqlComprobar = "SELECT COUNT(*) AS 'cantidad' FROM ".strtolower($tabla)." WHERE ".$camposTabla[0]." = ".$aDatosFormulario[0].";";
         $resultado = $conexion->query($sqlComprobar);
         $num = $resultado->fetch();
         if ($num['cantidad'] > 0) {
-            $msg = false;
-            header("location: pagina.php ? user=$IDREGISTRADO & registro=$ID");
+            echo '<script language="javascript">alert("el cliente ya esta registrado en la base de datos");</script>';
+            header("location: ../pagina.php ? user=$IDREGISTRADO");
             die();
         } else {
+            echo '<script language="javascript">alert("puedes continuar");</script>';
 
-            if ($tabla == "Departamento") {
-                $sql = "INSERT INTO $tabla ($camposTablaInsert)
-                    VALUES (" ")";
-            }
             $sql = "INSERT INTO $tabla ($camposTablaInsert)
-                    VALUES (" . implode(',', $aDatosFormulario) . ")";
-
-            $conexion->query($sql);
+                    VALUES (".implode(',',$aDatosFormulario).")";
             
-            if ($tabla == "Cliente") {
-                $archivo = fopen("PUFOSA.txt", "a+b");
-                if (!$archivo) {
-                    echo "error al abrir el fichero";
-                } else {
-                    fwrite($archivo, $ID . "\ ");
-                    $escribe = " añadir " . $tabla . " -> id " . $aDatosFormulario[0] . " " . $_POST[".$tabla."] . " \ " . date("F j, Y, g:i a") . " \n ";
-                    fwrite($archivo, $escribe);
-                    rewind($archivo);
-                }
-                
+            $conexion->query($sql);
+
+
+            $archivo = fopen("../PUFOSA.txt", "a+b");
+            if (!$archivo) {
+                echo "error al abrir el fichero";
+            } else {
+                fwrite($archivo, $IDREGISTRADO."\ ");
+                $escribe = " añadir ".$tabla." -> id ".$aDatosFormulario[0]." " . $_POST[".$tabla."] . " \ " . date("F j, Y, g:i a") . " \n ";
+                fwrite($archivo, $escribe);
+                rewind($archivo);
             }
-
-            $msg = true;
-            echo $msg;
-            echo "<h1>ejecutado correctamente</h1>";
-
+            
             echo '<script language="javascript">alert("cliente registrado correctamente");</script>';
-            header("location:pagina.php ? user=$IDREGISTRADO & registro=$ID & msg=$msg");
+            header('location: ../pagina.php ? msg= "<script language="javascript">alert("cliente registrado correctamente");</script>" ');
+            header("location: ../pagina.php ? user=$IDREGISTRADO ");
             die();
+
         }
     } catch (PDOException $e) {
-        echo $e;
         echo '<script language="javascript">alert("error "+$e);</script>';
     }
 }
+
