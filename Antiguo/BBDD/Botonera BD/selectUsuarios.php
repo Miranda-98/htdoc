@@ -23,11 +23,11 @@ echo "<link rel='stylesheet' type='text/css' href='estilosBotonera.css' />";
         foreach($result as $row){
             echo " 
                     <tr>
-                        <td>".$row['CODIGO']."</td>",
-                        "<td>".$row['NOMBRE']."</td>",
-                        "<td>".$row['APELLIDOS']."</td>",
-                        "<td>".$row['TELEFONO']."</td>",
-                        "<td>".$row['CORREO']."</td>",
+                        <td>".$row[0]."</td>",
+                        "<td>".$row[1]."</td>",
+                        "<td>".$row[2]."</td>",
+                        "<td>".$row[3]."</td>",
+                        "<td>".$row[4]."</td>",
                     "</tr>";
         }
 

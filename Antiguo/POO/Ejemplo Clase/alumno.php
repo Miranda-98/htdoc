@@ -52,6 +52,10 @@
     var_dump($alumno2);
 
 
+    echo "<br><br><br>";
+    $alumno2->set_nombre("pepe");
+    var_dump($alumno2);
+
 
 
 ?>
