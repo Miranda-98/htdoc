@@ -51,22 +51,7 @@ function añadirParrafoPosicion(divID, parrafo, posicion) {
 
 // EJERCICIO 3
 function añadirFormulario() {
-    // let elemento3 = document.createElement("label");
-    // let input = document.createElement("input");
-     
-    // let texto = document.createTextNode("Dato 1 bis");
-    // elemento3.appendChild(texto);
-     
-    //       input.setAttribute("id", "input1bis");
-    //       input.setAttribute("type", "text");
-    //       input.setAttribute("size", "20");
-    //       input.setAttribute("value", "Ricardo");
-     
-    // elemento3.appendChild(input);
-    // elemento3.appendChild(document.createElement("br"));
-     
-    // let form = document.forms[0];
-    // form.insertBefore(elemento3, form.querySelector("label").nextSibling);
+
     let label = document.createElement('label');
     let input = document.createElement('input');
     let formulario = document.forms[0];
@@ -87,17 +72,22 @@ function añadirFormulario() {
 
 // EJERCICIO 4
 function nuevoSexo(){
+
     let input = document.createElement('input');
-    let añadir = document.getElementById('label > input');
+    let añadir = document.getElementsByTagName('label')[4];
     let texto = document.createTextNode('Otro');
+
+    añadir.appendChild(document.createElement('br'));
     
 
     input.setAttribute('type', 'radio');
     input.setAttribute('name', 'sexo');
     input.setAttribute('value', 'Otro');
     input.appendChild(texto);
+    
 
     añadir.appendChild(input);
+    añadir.appendChild(texto);
 
 
 }
