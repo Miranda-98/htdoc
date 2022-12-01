@@ -1,8 +1,8 @@
 subir la primera vez
 1. crear repositorio
 2. git init 
-3. la primera linea que aparece al crear el repositorio
-4. la segunda linea que aparece al crear el repositorio
+3. la primera linea que aparece al crear el repositorio (clone)
+4. la segunda linea que aparece al crear el repositorio (push)
 5. git add
 6. git commit
 7. git push
