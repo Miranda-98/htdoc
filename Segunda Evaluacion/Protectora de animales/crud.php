@@ -34,7 +34,7 @@
             try{
                 $conn=parent::conectar();
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql= "SELECT * FROM $this->tabla ";
+                $sql= "SELECT * FROM $this->tabla ";//concatenar con get_tabla
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 $registros=$stmt->fetchAll(PDO::FETCH_OBJ);
@@ -52,7 +52,7 @@
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //comprobar que el id existe
                 //si existe se muestra la informacion relacionada
-                $sqlComprobar = "SELECT COUNT(*) as 'cantidad' from $this->tabla where id = $id";
+                $sqlComprobar = "SELECT COUNT(*) as 'cantidad' from $this->tabla where id = $id";//concatenar con get_tabla
                 $resultado = $conn->query($sqlComprobar);
                 $num = $resultado->fetch();
                 if($num['cantidad']>0) {
@@ -125,49 +125,49 @@
         }
     }
 
-    // echo "<br/>script crud.php<br/>";
-    // $x = new Conexion("animales", "localhost", "root", "");
-    // $pruebaCrud = new PruebaCrud('animales', $x);
-    // $pruebaCrud2 = new PruebaCrud('adopciones', $x);
+    echo "<br/>script crud.php<br/>";
+    $x = new Conexion("animales", "localhost", "root", "");
+    $pruebaCrud = new PruebaCrud('animales', $x);
+    $pruebaCrud2 = new PruebaCrud('adopciones', $x);
 
-    // echo "<pre>";
-    // print_r($pruebaCrud);
-    // echo "</pre>";
+    echo "<pre>";
+    print_r($pruebaCrud);
+    echo "</pre>";
     
-    // echo "<h2>Obtiene Todos</h2>";
-    // $resultadoObitneTodos = $pruebaCrud->obtieneTodos();
-    // echo "<pre>";
-    // var_dump($resultadoObitneTodos);
-    // echo "</pre>";
+    echo "<h2>Obtiene Todos</h2>";
+    $resultadoObitneTodos = $pruebaCrud->obtieneTodos();
+    echo "<pre>";
+    var_dump($resultadoObitneTodos);
+    echo "</pre>";
     
 
-    // echo "<h2>Obtiene ID</h2>";
-    // $resultadoObtieneID = $pruebaCrud->obtieneID('1');
-    // echo "<pre>";
-    // var_dump($resultadoObtieneID);
-    // echo "</pre>";
+    echo "<h2>Obtiene ID</h2>";
+    $resultadoObtieneID = $pruebaCrud->obtieneID('1');
+    echo "<pre>";
+    var_dump($resultadoObtieneID);
+    echo "</pre>";
 
-    // echo "<h2>Borrar ID</h2>";
-    // $resultadoBorrarID = $pruebaCrud->borrarID('9');
-    // echo "<pre>";
-    // var_dump($resultadoBorrarID);
-    // echo "</pre>";
+    echo "<h2>Borrar ID</h2>";
+    $resultadoBorrarID = $pruebaCrud->borrarID('9');
+    echo "<pre>";
+    var_dump($resultadoBorrarID);
+    echo "</pre>";
 
-    // echo "<h2>Obtiene Todos Adopciones</h2>";
-    // $resultadoObitneTodos = $pruebaCrud2->obtieneTodos();
-    // echo "<pre>";
-    // var_dump($resultadoObitneTodos);
-    // echo "</pre>";
+    echo "<h2>Obtiene Todos Adopciones</h2>";
+    $resultadoObitneTodos = $pruebaCrud2->obtieneTodos();
+    echo "<pre>";
+    var_dump($resultadoObitneTodos);
+    echo "</pre>";
 
-    // echo "<h2>Borrar ID Adopciones</h2>";
-    // $resultadoBorrarID = $pruebaCrud2->borrarID('9');
-    // echo "<pre>";
-    // var_dump($resultadoBorrarID);
-    // echo "</pre>";
+    echo "<h2>Borrar ID Adopciones</h2>";
+    $resultadoBorrarID = $pruebaCrud2->borrarID('9');
+    echo "<pre>";
+    var_dump($resultadoBorrarID);
+    echo "</pre>";
 
-    // echo "<h2>Obtiene Todos Adopciones</h2>";
-    // $resultadoObitneTodos = $pruebaCrud2->obtieneTodos();
-    // echo "<pre>";
-    // var_dump($resultadoObitneTodos);
-    // echo "</pre>";
+    echo "<h2>Obtiene Todos Adopciones</h2>";
+    $resultadoObitneTodos = $pruebaCrud2->obtieneTodos();
+    echo "<pre>";
+    var_dump($resultadoObitneTodos);
+    echo "</pre>";
 ?>

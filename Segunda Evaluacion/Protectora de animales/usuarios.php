@@ -81,7 +81,7 @@
         }
     }
 
-    $usuario = new Usuario('1','anaaaaaaaaaaa','martinez','hombre', '3c','111111', 24,'');
+    $usuario = new Usuario('2','maria victoria','martinez','hombre', '3c','111111', 24,'');
     echo "<pre>";
     print_r($usuario);
     echo "<pre/>";

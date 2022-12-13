@@ -1,5 +1,6 @@
 <?php 
     class Conexion{
+        //coger desde fichero
         private $bbdd;
         private $servidor;
         private $usuario;
@@ -68,30 +69,30 @@
         }
     }
     
-    // $obj = new PruebaConexion("animales", "localhost", "root", "");
-    // echo "<pre>"; 
-    // print_r($obj);
-    // echo "</pre>";
+    $obj = new PruebaConexion("animales", "localhost", "root", "");
+    echo "<pre>"; 
+    print_r($obj);
+    echo "</pre>";
 
     
-    // $obj->con();
-    // echo "<br/>scrip conexion.php<br/>";
+    $obj->con();
+    echo "<br/>scrip conexion.php<br/>";
 
 
-    // $obj = new PDO("mysql:host=localhost;dbname=animales", 'root', '');
-    // $obj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // $sql = "SELECT * FROM animales;";
+    $obj = new PDO("mysql:host=localhost;dbname=animales", 'root', '');
+    $obj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT * FROM animales;";
 
-    // $result = $obj->query($sql);//almaceno en result lo que devuelve la query 
-    // foreach($result as $row){
-    //     echo $row[0],
-    //                 $row[1],
-    //                 $row[2],
-    //                 $row[3],
-    //                 $row[4].'<br/>';
-    // }
+    $result = $obj->query($sql);//almaceno en result lo que devuelve la query 
+    foreach($result as $row){
+        echo $row[0],
+                    $row[1],
+                    $row[2],
+                    $row[3],
+                    $row[4].'<br/>';
+    }
 
-    // echo "<pre>"; 
-    // print_r($obj);
-    // echo "</pre>";
+    echo "<pre>"; 
+    print_r($obj);
+    echo "</pre>";
 ?>
