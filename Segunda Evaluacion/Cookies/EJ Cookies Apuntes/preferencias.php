@@ -32,9 +32,10 @@
         font-family: <?php echo $_COOKIE['fuenteLetra']?>, cursive;
         font-size: 50px;
     }
+    
 </style>
 <body>
-
+<?php echo "pepe ".$_COOKIE['colorFondo'] ?>
 <p>0123456789</p>
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
         
