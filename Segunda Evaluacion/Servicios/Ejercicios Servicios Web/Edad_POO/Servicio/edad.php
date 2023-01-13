@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
     </div>
     
 </body>
-</html>
+</html> -->
 <?php
     // if(isset($_POST['enviar'])){
     //     $fechaNacimiento = $_POST['calendario'];
@@ -49,27 +49,32 @@
     //     }
         
     // }
-    class DiferenciaEdad{
-        function diferenciaEdad($fechaNacimiento){
-            $aux = explode('-',$fechaNacimiento);
-            $año = $aux[0] * 365;
-            $mes = $aux[1] * 30;
-            $dia = $aux[2];
-            $valorFechaNacimiento = $año + $mes + $dia;
-            
-            $fechaActual = date('Y/m/d');
-            $aux2 = explode('/', $fechaActual);
-            $año2 = $aux2[0] * 365;
-            $mes2 = $aux2[1] * 30;
-            $dia2 = $aux2[2];
-            $valorFechaActual = $año2 + $mes2 + $dia2;
-
-            $diff = $valorFechaActual - $valorFechaNacimiento;
-            if($diff > (18*365)){
-                return "eres mayor de edad";
-            } else {
-                return "aun eres un bebe";
-            }
+    class DiferenciaEdadClase{
+        function xx($a,$b){
+            return $a+$b;
         }
     }
+        // function diferenciaEdad($fechaNacimiento){
+        //     $aux = explode('-',$fechaNacimiento);
+        //     $año = $aux[0] * 365;
+        //     $mes = $aux[1] * 30;
+        //     $dia = $aux[2];
+        //     $valorFechaNacimiento = $año + $mes + $dia;
+            
+        //     $fechaActual = date('Y/m/d');
+        //     $aux2 = explode('/', $fechaActual);
+        //     $año2 = $aux2[0] * 365;
+        //     $mes2 = $aux2[1] * 30;
+        //     $dia2 = $aux2[2];
+        //     $valorFechaActual = $año2 + $mes2 + $dia2;
+
+        //     $diff = $valorFechaActual - $valorFechaNacimiento;
+        //     if($diff > (18*365)){
+        //         $b = "eres mayor de edad";
+        //     } else {
+        //         $b = "aun eres un bebe";
+        //     }
+        //     return $b;
+        // }
+    
 ?>
