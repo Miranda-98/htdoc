@@ -4,6 +4,8 @@
 
 
     try {
+        echo "<h1 style='font-style:italic;'>El Gran Pepe</h1>";
+
         $conexion = conectar();
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
@@ -54,7 +56,7 @@
                         <td>Departamento_ID</td>
                     </tr>"; 
         
-        
+                    
         
         foreach($result as $fila){
             echo " <tr>
@@ -71,6 +73,9 @@
 
 
         }
+        echo "</table>";
+
+        
 
         /*
             crear las páginas según la cantidad de registros existentes y la cantidad
@@ -79,12 +84,15 @@
             sobrantes para no perderlos)
             el if es pura mariconada para estetica
         */
-        for ($i=1; $i <= ceil($num['cantidad']/$limite); $i++) { 
+         for ($i=1; $i <= ceil($num['cantidad']/$limite); $i++) { 
             if($i<ceil($num['cantidad']/$limite))
                 echo "<a href='?pgnActual=".$i."'>".$i."</a> - ";
             else 
                 echo "<a href='?pgnActual=".$i."'>".$i."</a> ";
-        }   
+        }  
+       
+
+        
     
     } catch (PDOException $e) {
         echo "conexion fallida: ".$e->getMessage();

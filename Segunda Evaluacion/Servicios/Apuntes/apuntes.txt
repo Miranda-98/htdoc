@@ -1,7 +1,0 @@
-quitar el ; de extension soap de php.ini de xampp
---fichero serverSOAP.php--
-incluir libreria donde esta definido el servicio
-($option)meter en una variable en un array asociativo el directorio del servicio
-$server = new SoapServer(NULL, $options)
-$server->setClass('Library'); establecemos la clase donde esta el servicio(nombre de clase, no de fichero)
-$server->handle(); inicia el servicio

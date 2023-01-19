@@ -20,7 +20,7 @@
             if($num['cantidad']>0 && !$pass) {
                 echo "puedes entrar";
             } else {
-                echo "vales verga";
+                echo "vales v..";
             }
 
         } catch (PDOException $e){
