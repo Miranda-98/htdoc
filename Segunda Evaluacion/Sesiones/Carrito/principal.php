@@ -32,23 +32,17 @@
 
     
     // comprobar los valores previos del array
-    foreach($_SESSION['productos'] as $p){
-        echo "valores previos " . $p;
-    }
-    
+    echo 'valores previos: ' . $_SESSION['productos'];
     
     // guardamos en una sesion los productos seleccionados del carrito
     if(isset($_POST['botonEnviar'])){
-        
         foreach($_POST['producto'] as $productosSeleccionados) {
-        
+            $_SESSION['productos'] = $productosSeleccionados;
             echo "<ul>";
-                //echo "<li>".$_SESSION['productos']."</li>";
+                echo "<li>".$_SESSION['productos']."</li>";
             echo "</ul>";
         }
     }
     
-
-    // mostrar el contenido de la sesion
     
 ?>
